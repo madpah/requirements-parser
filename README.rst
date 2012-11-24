@@ -16,9 +16,7 @@ Reqfile Parser can parse a file-like object or a text string.
     >>> import pprint
     >>> with open('requirements.txt', 'rb') as f:
     ...     pprint.pprint(reqfileparser.parse(f)))
-    [
-        ('requests', '>=', '0.14.1'),
-        ('requests-oath2', None, None),
-        ('Django', '==', '1.4.2'),
-    ]
+    [{'extras': None, 'name': 'requests', 'operator': '>=', 'version': '0.14.1'},
+     {'extras': None, 'name': 'requests-oath2', 'operator': None, 'version': None},
+     {'extras': None, 'name': 'Django', 'operator': '==', 'version': '1.4.2'}]
 
