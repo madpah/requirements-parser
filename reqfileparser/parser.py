@@ -1,6 +1,20 @@
 import re
 import warnings
 
+# Pip's pip/download.py:is_url() function doesn't check THAT closely
+def is_uri(uri):
+    uri = uri.lower()
+    match = re.match(r'^(svn|git|bzr|hg|http|https|file|ftp):(\.+)', uri)
+    return match is not None
+
+def is_vcs_uri(uri):
+    uri = uri.lower()
+    match = re.match(
+        r'^(?P<vcs>svn|git|bzr|hg)\+'
+        '(?P<uri>[^#&]+)'
+        '#egg=(?P<name>[^&]+)$', uri, re.MULTILINE)
+    return match is not None
+
 # See pip/req.py:parse_requirements()
 def parse(reqstr):
     requirements = []
@@ -26,19 +40,22 @@ def parse(reqstr):
         elif line.startswith('-Z') or line.startswith('--always-unzip'):
             warnings.warn('Unused option --always-unzip. Skipping.')
             continue
-        elif line.startswith('-e') or line.startswith('--editable'):
-            if line.startswith('-e'):
-                tmpstr = line[len('-e'):].strip()
-            else:
-                tmpstr = line[len('--editable'):].strip()
-            match = re.match(
-                r'^((?P<vcs>svn|git|bzr|hg)\+)?'
-                '(?P<uri>[^#&]+)'
-                '#egg=(?P<name>[^&]+)$', tmpstr, re.MULTILINE)
         elif line.startswith('file:'):
             match = re.match(
                 r'^(?P<path>[^#]+)'
                 '#egg=(?P<name>[^&]+)$', line, re.MULTILINE)
+        elif line.startswith('-e') or line.startswith('--editable') or \
+             is_uri(line) or is_vcs_uri(line):
+            if line.startswith('-e'):
+                tmpstr = line[len('-e'):].strip()
+            elif line.startswith('--editable'):
+                tmpstr = line[len('--editable'):].strip()
+            else:
+                tmpstr = line
+            match = re.match(
+                r'^((?P<vcs>svn|git|bzr|hg)\+)?'
+                '(?P<uri>[^#&]+)'
+                '#egg=(?P<name>[^&]+)$', tmpstr, re.MULTILINE)
         else:
             match = re.match(
                 r'^(?P<name>[A-Za-z0-9\-_]+)'
