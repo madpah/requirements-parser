@@ -105,3 +105,12 @@ class TestParser(unittest.TestCase):
                 self.assertEqual(out[0]['name'], 'psycopg2')
                 self.assertEqual(out[4]['name'], 'dnspython')
 
+        with open(os.path.join(this_dir, 'reqfiles', 'crateio_requirements.txt'), 'rb') as f:
+            with warnings.catch_warnings(record=True) as w:
+                warnings.simplefilter("always")
+                out = parse(f)
+                self.assertEqual(len(w), 1)  # warning for --extra-index-url
+                self.assertEqual(out[0]['name'], 'Babel')
+                self.assertEqual(out[0]['operator'], '==')
+                self.assertEqual(out[0]['version'], '0.9.6')
+                
