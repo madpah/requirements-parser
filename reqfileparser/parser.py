@@ -19,8 +19,14 @@ def is_vcs_uri(uri):
 def parse(reqstr):
     requirements = []
 
-    if not isinstance(reqstr, basestring):
-        reqstr = reqstr.read()
+    try:
+        # Python 2.x compatibility
+        if not isinstance(reqstr, basestring):
+            reqstr = reqstr.read()
+    except NameError:
+        # Python 3.x only
+        if not isinstance(reqstr, str):
+            reqstr = reqstr.read()
 
     for line in reqstr.splitlines():
         line = line.strip()

@@ -1,7 +1,13 @@
 import os.path
 import unittest
 import warnings
-from StringIO import StringIO
+
+try:
+    # Python 2.x compatibility
+    from StringIO import StringIO
+except ImportError:
+    # Python 3.x only
+    from io import StringIO
 
 from reqfileparser import parse
 
@@ -83,7 +89,7 @@ class TestParser(unittest.TestCase):
             self.assertEqual(out, [])
 
     def test_fullfile(self):
-        with open(os.path.join(this_dir, 'reqfiles', 'rtfd_requirements.txt'), 'rb') as f:
+        with open(os.path.join(this_dir, 'reqfiles', 'rtfd_requirements.txt'), 'r') as f:
             out = parse(f)
             self.assertEqual(len(out), 31)
             self.assertEqual(out[0]['name'], 'Distutils2')
@@ -96,7 +102,7 @@ class TestParser(unittest.TestCase):
             self.assertEqual(out[24]['vcs'], 'git')
             self.assertEqual(out[24]['uri'], 'git://github.com/toastdriven/django-haystack@259274e4127f723d76b893c87a82777f9490b960')
 
-        with open(os.path.join(this_dir, 'reqfiles', 'rtfd_deploy_requirements.txt'), 'rb') as f:
+        with open(os.path.join(this_dir, 'reqfiles', 'rtfd_deploy_requirements.txt'), 'r') as f:
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
                 out = parse(f)
@@ -105,7 +111,7 @@ class TestParser(unittest.TestCase):
                 self.assertEqual(out[0]['name'], 'psycopg2')
                 self.assertEqual(out[4]['name'], 'dnspython')
 
-        with open(os.path.join(this_dir, 'reqfiles', 'crateio_requirements.txt'), 'rb') as f:
+        with open(os.path.join(this_dir, 'reqfiles', 'crateio_requirements.txt'), 'r') as f:
             with warnings.catch_warnings(record=True) as w:
                 warnings.simplefilter("always")
                 out = parse(f)
