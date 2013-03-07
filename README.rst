@@ -2,6 +2,7 @@ Reqfile Parser
 ==============
 
 .. image:: https://secure.travis-ci.org/davidfischer/reqfile-parser.png?branch=master
+    :target: https://travis-ci.org/davidfischer/reqfile-parser
 
 This is a small Python module for parsing Pip_ requirement files.
 
