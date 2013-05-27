@@ -1,6 +1,7 @@
 import re
 import warnings
 
+
 # Pip's pip/download.py:is_url() function doesn't check THAT closely
 def is_uri(uri):
     uri = uri.lower()
@@ -68,7 +69,7 @@ def parse(reqstr):
                 '(\[(?P<extras>[A-Za-z0-9\-\_]+)\])?'
                 '(?P<operator>==|>=|>|<=|<=)?'
                 '(?P<version>[A-Za-z0-9\.]+)?$', line, re.MULTILINE)
-        
+
         if match:
             requirements.append(match.groupdict())
         else:
