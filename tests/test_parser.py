@@ -9,7 +9,7 @@ except ImportError:
     # Python 3.x only
     from io import StringIO
 
-from reqfileparser import parse
+from requirements import parse
 
 this_dir = os.path.dirname(__file__)
 
