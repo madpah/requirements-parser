@@ -1,7 +1,7 @@
 License
 =======
 
-Reqfile Parser is licensed under the BSD license.
+Requirements Parser is licensed under the BSD license.
 
 Copyright (c) 2012, David Fischer
 
