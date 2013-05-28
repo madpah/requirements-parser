@@ -6,16 +6,16 @@ except ImportError:
 long_description = open('README.rst').read()
 
 setup(
-    name = 'reqfile-parser',
+    name = 'requirements-parser',
     version = '0.0.2',
     description = 'Parses Pip requirement files',
     long_description = long_description,
     author = 'David Fischer',
     author_email = 'djfische@gmail.com',
-    url = 'https://github.com/davidfischer/reqfile-parser',
+    url = 'https://github.com/davidfischer/requirements-parser',
     license = 'BSD',
     platforms = ['OS Independent'],
-    packages = ['reqfileparser'],
+    packages = ['requirements'],
     classifiers = [
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
