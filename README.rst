@@ -1,8 +1,8 @@
 Requirements Parser
 ===================
 
-.. image:: https://secure.travis-ci.org/davidfischer/reqfile-parser.png?branch=master
-    :target: https://travis-ci.org/davidfischer/reqfile-parser
+.. image:: https://secure.travis-ci.org/davidfischer/requirements-parser.png?branch=master
+    :target: https://travis-ci.org/davidfischer/requirements-parser
 
 This is a small Python module for parsing Pip_ requirement files.
 
