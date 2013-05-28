@@ -2,7 +2,7 @@ from .parser import parse
 
 _MAJOR = 0
 _MINOR = 0
-_PATCH = 2
+_PATCH = 3
 
 def version_tuple():
     '''
