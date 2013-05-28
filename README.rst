@@ -1,5 +1,5 @@
-Reqfile Parser
-==============
+Requirements Parser
+===================
 
 .. image:: https://secure.travis-ci.org/davidfischer/reqfile-parser.png?branch=master
     :target: https://travis-ci.org/davidfischer/reqfile-parser
@@ -11,14 +11,14 @@ This is a small Python module for parsing Pip_ requirement files.
 Examples
 ========
 
-Reqfile Parser can parse a file-like object or a text string.
+Requirements parser can parse a file-like object or a text string.
 
 ::
 
-    >>> import reqfileparser
+    >>> import requirements
     >>> import pprint
     >>> with open('requirements.txt', 'rb') as f:
-    ...     pprint.pprint(reqfileparser.parse(f)))
+    ...     pprint.pprint(requirements.parse(f)))
     [{'extras': None, 'name': 'requests', 'operator': '>=', 'version': '0.14.1'},
      {'extras': None, 'name': 'requests-oath2', 'operator': None, 'version': None},
      {'extras': None, 'name': 'Django', 'operator': '==', 'version': '1.4.2'}]
