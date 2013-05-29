@@ -1,5 +1,6 @@
 import re
 import warnings
+from pkg_resources import Requirement
 
 
 # Pip's pip/download.py:is_url() function doesn't check THAT closely
@@ -31,9 +32,10 @@ def parse(reqstr):
 
     for line in reqstr.splitlines():
         line = line.strip()
-        if len(line[:1]) == 0:
+        if line == '':
             continue
         elif not line or line.startswith('#'):
+            # comments are lines that start with # only
             continue
         elif line.startswith('-r') or line.startswith('--requirement'):
             warnings.warn('Recursive requirements are not supported. Skipping.')
@@ -64,16 +66,19 @@ def parse(reqstr):
                 '(?P<uri>[^#&]+)'
                 '#egg=(?P<name>[^&]+)$', tmpstr, re.MULTILINE)
         else:
-            match = re.match(
-                r'^(?P<name>[A-Za-z0-9\-_]+)'
-                '(\[(?P<extras>[A-Za-z0-9\-\_]+)\])?'
-                '(?P<operator>==|>=|>|<=|<=)?'
-                '(?P<version>[A-Za-z0-9\.]+)?$', line, re.MULTILINE)
+            try:
+                # Handles inline comments despite not being strictly legal
+                req = Requirement.parse(line)
+                yield {
+                    'name': req.project_name,
+                    'extras': list(req.extras),
+                    'specs': req.specs,
+                }
+                continue
+            except ValueError:
+                match = None
 
         if match:
-            requirements.append(match.groupdict())
+            yield match.groupdict()
         else:
             raise ValueError('Invalid requirement line "%s"' %line)
-
-    return requirements
-
