@@ -25,6 +25,11 @@ class TestParser(unittest.TestCase):
     def test_comment(self):
         self.assertEqual(listparse('#comment>>1.2.'), [])
 
+        # This gets handled even though it's against the spec
+        out = listparse('req==1.0    # comment')
+        self.assertEqual(out[0]['name'], 'req')
+        self.assertEqual(out[0]['specs'], [('==', '1.0')])
+
     def test_invalid(self):
         # invalid operators
         self.assertRaises(ValueError, listparse, 'test>>1.2.0')
@@ -98,6 +103,12 @@ class TestParser(unittest.TestCase):
             ('<', '2.0a0'),
             ('==', '2.4c1'),
         ])
+
+    def test_names(self):
+        # Checks '.' in names
+        out = listparse('z3c.checkversions==0.4.1')
+        self.assertEqual(out[0]['name'], 'z3c.checkversions')
+        self.assertEqual(out[0]['specs'], [('==', '0.4.1')])
 
     def test_warnings(self):
         with warnings.catch_warnings(record=True) as w:
