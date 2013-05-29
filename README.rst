@@ -25,7 +25,7 @@ Requirements parser can parse a file-like object or a text string.
     ...
     {'name': 'requirements',
      'uri': 'git://github.com/davidfischer/requirements-parser.git',
-     'vcs': git}
+     'vcs': 'git'}
     {'extras': [], 'name': 'Django', 'specs': [('>=', '1.5'), ('<', '1.6')]}
     {'extras': [], 'name': 'numpy', 'specs': []}
     {'extras': ['pdf'], 'name': 'DocParser', 'specs': []}
