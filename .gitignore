@@ -5,4 +5,4 @@ docs/_build/*
 *.egg
 dist/
 build/
-venv
+venv*
