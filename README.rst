@@ -24,7 +24,7 @@ Requirements parser can parse a file-like object or a text string.
     ...         pprint.pprint(req)
     ...
     {'name': 'requirements',
-     'uri': 'git://github.com/davidfischer/requirements-parser.git',
+     'uri': 'https://github.com/davidfischer/requirements-parser.git',
      'vcs': 'git'}
     {'extras': [], 'name': 'Django', 'specs': [('>=', '1.5'), ('<', '1.6')]}
     {'extras': [], 'name': 'numpy', 'specs': []}
