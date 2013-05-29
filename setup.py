@@ -1,7 +1,10 @@
+import warnings
+
 try:
     from setuptools import setup
 except ImportError:
-    from distutils.core import setup
+    from distutils import setup
+    warnings('Please install setuptools or distribute!')
 
 long_description = open('README.rst').read()
 
