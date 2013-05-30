@@ -1,8 +1,14 @@
 language: python
+
 python:
   - "3.3"
   - "3.2"
   - "2.7"
   - "2.6"
-# command to run tests, e.g. python setup.py test
-script:  python setup.py test
+
+install:
+  - pip install flake8 --use-mirrors
+
+script:
+  - python setup.py test
+  - flake8 requirements

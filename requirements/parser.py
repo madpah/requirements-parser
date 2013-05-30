@@ -9,6 +9,7 @@ def is_uri(uri):
     match = re.match(r'^(svn|git|bzr|hg|http|https|file|ftp):(\.+)', uri)
     return match is not None
 
+
 def is_vcs_uri(uri):
     uri = uri.lower()
     match = re.match(
@@ -17,10 +18,9 @@ def is_vcs_uri(uri):
         '#egg=(?P<name>[^&]+)$', uri, re.MULTILINE)
     return match is not None
 
+
 # See pip/req.py:parse_requirements()
 def parse(reqstr):
-    requirements = []
-
     try:
         # Python 2.x compatibility
         if not isinstance(reqstr, basestring):
@@ -38,13 +38,13 @@ def parse(reqstr):
             # comments are lines that start with # only
             continue
         elif line.startswith('-r') or line.startswith('--requirement'):
-            warnings.warn('Recursive requirements are not supported. Skipping.')
+            warnings.warn('Recursive requirements not supported. Skipping.')
             continue
         elif line.startswith('-f') or line.startswith('--find-links') or \
-             line.startswith('-i') or line.startswith('--index-url') or \
-             line.startswith('--extra-index-url') or \
-             line.startswith('--no-index'):
-            warnings.warn('Private repos are not supported. Skipping.')
+                line.startswith('-i') or line.startswith('--index-url') or \
+                line.startswith('--extra-index-url') or \
+                line.startswith('--no-index'):
+            warnings.warn('Private repos not supported. Skipping.')
             continue
         elif line.startswith('-Z') or line.startswith('--always-unzip'):
             warnings.warn('Unused option --always-unzip. Skipping.')
@@ -54,7 +54,7 @@ def parse(reqstr):
                 r'^(?P<path>[^#]+)'
                 '#egg=(?P<name>[^&]+)$', line, re.MULTILINE)
         elif line.startswith('-e') or line.startswith('--editable') or \
-             is_uri(line) or is_vcs_uri(line):
+                is_uri(line) or is_vcs_uri(line):
             if line.startswith('-e'):
                 tmpstr = line[len('-e'):].strip()
             elif line.startswith('--editable'):
@@ -81,4 +81,4 @@ def parse(reqstr):
         if match:
             yield match.groupdict()
         else:
-            raise ValueError('Invalid requirement line "%s"' %line)
+            raise ValueError('Invalid requirement line "%s"' % line)
