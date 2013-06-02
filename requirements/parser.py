@@ -9,9 +9,11 @@ uri_regex = re.compile(r'^(svn|git|bzr|hg|http|https|file|ftp):(\.+)')
 file_uri_regex = re.compile(
     r'^(?P<path>[^#]+)#egg=(?P<name>[^&]+)$', re.MULTILINE)
 editable_uri_regex = re.compile(r'^((?P<vcs>svn|git|bzr|hg)\+)?'
-                                '(?P<uri>[^#&]+)#egg=(?P<name>[^&]+)$', re.MULTILINE)
+                                '(?P<uri>[^#&]+)#egg=(?P<name>[^&]+)$',
+                                re.MULTILINE)
 vcs_uri_regex = re.compile(r'^(?P<vcs>svn|git|bzr|hg)\+'
-                           '(?P<uri>[^#&]+)#egg=(?P<name>[^&]+)$', re.MULTILINE)
+                           '(?P<uri>[^#&]+)#egg=(?P<name>[^&]+)$',
+                           re.MULTILINE)
 
 # Pip's pip/download.py:is_url() function doesn't check THAT closely
 
