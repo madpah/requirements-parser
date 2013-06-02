@@ -6,11 +6,11 @@ from pkg_resources import Requirement
 # Compiled regular expressions
 
 uri_regex = re.compile(r'^(svn|git|bzr|hg|http|https|file|ftp):(\.+)')
-file_uri_regex = re.compile(r'^(?P<path>[^#]+)#egg=(?P<name>[^&]+)$')
+file_uri_regex = re.compile(r'^(?P<path>[^#]+)#egg=(?P<name>[^&]+)$', re.MULTILINE)
 editable_uri_regex = re.compile(r'^((?P<vcs>svn|git|bzr|hg)\+)?'
-                                '(?P<uri>[^#&]+)#egg=(?P<name>[^&]+)$')
+                                '(?P<uri>[^#&]+)#egg=(?P<name>[^&]+)$', re.MULTILINE)
 vcs_uri_regex = re.compile(r'^(?P<vcs>svn|git|bzr|hg)\+'
-                           '(?P<uri>[^#&]+)#egg=(?P<name>[^&]+)$')
+                           '(?P<uri>[^#&]+)#egg=(?P<name>[^&]+)$', re.MULTILINE)
 
 # Pip's pip/download.py:is_url() function doesn't check THAT closely
 
@@ -23,7 +23,7 @@ def is_uri(uri):
 
 def is_vcs_uri(uri):
     uri = uri.lower()
-    match = re.match(vcs_uri_regex, uri, re.MULTILINE)
+    match = re.match(vcs_uri_regex, uri)
     return match is not None
 
 
@@ -58,7 +58,7 @@ def parse(reqstr):
             warnings.warn('Unused option --always-unzip. Skipping.')
             continue
         elif line.startswith('file:'):
-            match = re.match(file_uri_regex, line, re.MULTILINE)
+            match = re.match(file_uri_regex, line)
         elif line.startswith('-e') or line.startswith('--editable') or \
                 is_uri(line) or is_vcs_uri(line):
             if line.startswith('-e'):
@@ -67,7 +67,7 @@ def parse(reqstr):
                 tmpstr = line[len('--editable'):].strip()
             else:
                 tmpstr = line
-            match = re.match(editable_uri_regex, tmpstr, re.MULTILINE)
+            match = re.match(editable_uri_regex, tmpstr)
         else:
             try:
                 # Handles inline comments despite not being strictly legal
