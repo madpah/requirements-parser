@@ -1,0 +1,10 @@
+[
+ {
+  "path": "file:///path/to/your/lib/project", 
+  "name": "MyProject"
+ }, 
+ {
+  "path": "file:../../lib/project", 
+  "name": "MyProject"
+ }
+]
