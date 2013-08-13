@@ -1,0 +1,33 @@
+[
+ {
+  "vcs": "git", 
+  "uri": "https://github.com/davidfischer/requirements-parser.git", 
+  "name": "requirements"
+ }, 
+ {
+  "extras": [], 
+  "name": "Django", 
+  "specs": [
+   [
+    ">=", 
+    "1.5"
+   ], 
+   [
+    "<", 
+    "1.6"
+   ]
+  ]
+ }, 
+ {
+  "extras": [], 
+  "name": "numpy", 
+  "specs": []
+ }, 
+ {
+  "extras": [
+   "pdf"
+  ], 
+  "name": "DocParser", 
+  "specs": []
+ }
+]

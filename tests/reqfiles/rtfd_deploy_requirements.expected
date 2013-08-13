@@ -1,0 +1,27 @@
+[
+ {
+  "extras": [], 
+  "name": "psycopg2", 
+  "specs": []
+ }, 
+ {
+  "extras": [], 
+  "name": "gunicorn", 
+  "specs": []
+ }, 
+ {
+  "extras": [], 
+  "name": "pysolr", 
+  "specs": []
+ }, 
+ {
+  "extras": [], 
+  "name": "python-memcached", 
+  "specs": []
+ }, 
+ {
+  "extras": [], 
+  "name": "dnspython", 
+  "specs": []
+ }
+]

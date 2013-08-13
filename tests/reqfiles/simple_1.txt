@@ -1,0 +1,4 @@
+z3c.checkversions==0.4.1
+MyPackage
+Framework==0.9.4
+Library>=0.2
