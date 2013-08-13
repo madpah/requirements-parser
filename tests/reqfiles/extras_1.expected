@@ -1,0 +1,22 @@
+[
+ {
+  "extras": [
+   "pdf"
+  ], 
+  "name": "MyPackage", 
+  "specs": [
+   [
+    "==", 
+    "3.0"
+   ]
+  ]
+ }, 
+ {
+  "extras": [
+   "foo", 
+   "bar"
+  ], 
+  "name": "Fizzy", 
+  "specs": []
+ }
+]

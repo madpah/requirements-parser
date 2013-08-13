@@ -1,0 +1,2 @@
+file:///path/to/your/lib/project#egg=MyProject
+file:../../lib/project#egg=MyProject

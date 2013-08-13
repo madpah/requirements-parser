@@ -1,0 +1,22 @@
+[
+ {
+  "vcs": "svn", 
+  "name": "MyProject", 
+  "uri": "svn://svn.myproject.org/svn/MyProject"
+ }, 
+ {
+  "vcs": null, 
+  "name": "MyProject", 
+  "uri": "git://git.myproject.org/MyProject.git@da39a3ee5e6b4b0d3255bfef95601890afd80709"
+ }, 
+ {
+  "vcs": "hg", 
+  "name": "MyProject", 
+  "uri": "http://hg.myproject.org/MyProject/@special_feature"
+ }, 
+ {
+  "vcs": "bzr", 
+  "name": "MyProject", 
+  "uri": "lp:MyProject"
+ }
+]

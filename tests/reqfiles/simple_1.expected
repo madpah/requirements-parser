@@ -1,0 +1,37 @@
+[
+ {
+  "extras": [], 
+  "name": "z3c.checkversions", 
+  "specs": [
+   [
+    "==", 
+    "0.4.1"
+   ]
+  ]
+ }, 
+ {
+  "extras": [], 
+  "name": "MyPackage", 
+  "specs": []
+ }, 
+ {
+  "extras": [], 
+  "name": "Framework", 
+  "specs": [
+   [
+    "==", 
+    "0.9.4"
+   ]
+  ]
+ }, 
+ {
+  "extras": [], 
+  "name": "Library", 
+  "specs": [
+   [
+    ">=", 
+    "0.2"
+   ]
+  ]
+ }
+]
