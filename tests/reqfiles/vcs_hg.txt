@@ -1,0 +1,15 @@
+-e hg+http://hg.myproject.org/MyProject#egg=MyProject
+-e hg+https://hg.myproject.org/MyProject#egg=MyProject
+-e hg+ssh://hg.myproject.org/MyProject#egg=MyProject
+-e hg+http://hg.myproject.org/MyProject@da39a3ee5e6b#egg=MyProject
+-e hg+http://hg.myproject.org/MyProject@2019#egg=MyProject
+-e hg+http://hg.myproject.org/MyProject@v1.0#egg=MyProject
+-e hg+http://hg.myproject.org/MyProject@special_feature#egg=MyProject
+
+hg+http://hg.myproject.org/MyProject#egg=MyProject
+hg+https://hg.myproject.org/MyProject#egg=MyProject
+hg+ssh://hg.myproject.org/MyProject#egg=MyProject
+hg+http://hg.myproject.org/MyProject@da39a3ee5e6b#egg=MyProject
+hg+http://hg.myproject.org/MyProject@2019#egg=MyProject
+hg+http://hg.myproject.org/MyProject@v1.0#egg=MyProject
+hg+http://hg.myproject.org/MyProject@special_feature#egg=MyProject

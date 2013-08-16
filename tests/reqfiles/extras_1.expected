@@ -1,22 +1,38 @@
 [
  {
+  "specifier": true, 
+  "local_file": false, 
+  "name": "MyPackage", 
+  "editable": false, 
+  "uri": null, 
   "extras": [
    "pdf"
   ], 
-  "name": "MyPackage", 
+  "vcs": null, 
+  "path": null, 
+  "line": "MyPackage[PDF]==3.0", 
   "specs": [
    [
     "==", 
     "3.0"
    ]
-  ]
+  ], 
+  "revision": null
  }, 
  {
+  "specifier": true, 
+  "local_file": false, 
+  "name": "Fizzy", 
+  "editable": false, 
+  "uri": null, 
   "extras": [
    "foo", 
    "bar"
   ], 
-  "name": "Fizzy", 
-  "specs": []
+  "vcs": null, 
+  "path": null, 
+  "line": "Fizzy [foo, bar]", 
+  "specs": [], 
+  "revision": null
  }
 ]
