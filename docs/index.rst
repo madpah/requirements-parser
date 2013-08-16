@@ -8,7 +8,7 @@ Requirements parser is a Python module for parsing Pip_ requirement files.
 .. _Pip: http://www.pip-installer.org
 
 
-Requests is BSD_ licensed.
+Requirements parser is BSD_ licensed.
 
 .. _BSD: http://opensource.org/licenses/BSD-2-Clause
 
