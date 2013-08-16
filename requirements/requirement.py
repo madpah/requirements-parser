@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 import re
 from pkg_resources import Requirement as Req
 
@@ -52,7 +53,7 @@ class Requirement(object):
         self.specs = []
 
     def __repr__(self):
-        return u'<Requirement: "{0}">'.format(self.line)
+        return '<Requirement: "{0}">'.format(self.line)
 
     def __getitem__(self, key):
         return getattr(self, key)
@@ -73,14 +74,14 @@ class Requirement(object):
         :raises: ValueError on an invalid requirement
         """
 
-        req = cls(u'-e {0}'.format(line))
+        req = cls('-e {0}'.format(line))
         req.editable = True
         vcs_match = VCS_REGEX.match(line)
         local_match = LOCAL_REGEX.match(line)
 
         if vcs_match is not None:
             groups = vcs_match.groupdict()
-            req.uri = u'{scheme}://{path}'.format(**groups)
+            req.uri = '{scheme}://{path}'.format(**groups)
             req.revision = groups['revision']
             req.name = groups['name']
             for vcs in VCS:
@@ -115,7 +116,7 @@ class Requirement(object):
 
         if vcs_match is not None:
             groups = vcs_match.groupdict()
-            req.uri = u'{scheme}://{path}'.format(**groups)
+            req.uri = '{scheme}://{path}'.format(**groups)
             req.revision = groups['revision']
             req.name = groups['name']
             for vcs in VCS:
@@ -123,11 +124,11 @@ class Requirement(object):
                     req.vcs = vcs
         elif uri_match is not None:
             groups = uri_match.groupdict()
-            req.uri = u'{scheme}://{path}'.format(**groups)
+            req.uri = '{scheme}://{path}'.format(**groups)
             req.name = groups['name']
             if groups['scheme'] == 'file':
                 req.local_file = True
-        elif u'#egg=' in line:
+        elif '#egg=' in line:
             # Assume a local file match
             assert local_match is not None, 'This should match everything'
             groups = local_match.groupdict()
