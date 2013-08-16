@@ -20,12 +20,12 @@ Requirements parser can parse a file-like object or a text string.
 ::
 
     >>> import requirements
-    >>> with open('requirements.txt', 'r') as f:
-    ...     for req in requirements.parse(f):
-    ...         print(req.name, req.specs, req.extras)
+    >>> reqfile = """
+    ...     Django>=1.5,<1.6
+    ...     DocParser[PDF]==1.0.0
+    ...     """
+    >>> for req in requirements.parse(reqfile):
+    ...     print(req.name, req.specs, req.extras)
     ...
-    requirements [] []
-    Django [('>=', '1.5'), ('<', '1.6')] []
-    numpy [] []
-    DocParser [] ['pdf']
-
+    ('Django', [('>=', '1.5'), ('<', '1.6')], [])
+    ('DocParser', [('==', '1.0.0')], ['pdf'])

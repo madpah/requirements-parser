@@ -33,9 +33,26 @@ class Requirement(object):
 
     Typically instances of this class are created with ``Requirement.parse``.
     For local file requirements, there's no verification that the file
-    exists.
+    exists. This class attempts to be *dict-like*.
 
     See: http://www.pip-installer.org/en/latest/logic.html
+
+    **Members**:
+
+    * ``line`` - the actual requirement line being parsed
+    * ``editable`` - a boolean whether this requirement is "editable"
+    * ``local_file`` - a boolean whether this requirement is a local file/path
+    * ``specifier`` - a boolean whether this requirement used a requirement
+      specifier (eg. "django>=1.5" or "requirements")
+    * ``vcs`` - a string specifying the version control system
+    * ``revision`` - a version control system specifier
+    * ``name`` - the name of the requirement
+    * ``uri`` - the URI if this requirement was specified by URI
+    * ``path`` - the local path to the requirement
+    * ``extras`` - a list of extras for this requirement
+      (eg. "mymodule[extra1, extra2]")
+    * ``specs`` - a list of specs for this requirement
+      (eg. "mymodule>1.5,<1.6" => [('>', '1.5'), ('<', '1.6')])
     """
 
     def __init__(self, line):

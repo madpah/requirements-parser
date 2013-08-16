@@ -3,8 +3,16 @@ import warnings
 from .requirement import Requirement
 
 
-# See pip/req.py:parse_requirements()
 def parse(reqstr):
+    """
+    Parse a requirements file into a list of Requirements
+
+    See: pip/req.py:parse_requirements()
+
+    :param reqstr: a string or file like object containing requirements
+    :returns: a *generator* of Requirement objects
+    """
+
     try:
         # Python 2.x compatibility
         if not isinstance(reqstr, basestring):
