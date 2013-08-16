@@ -12,6 +12,14 @@ This is a small Python module for parsing Pip_ requirement files.
 .. _Pip: http://www.pip-installer.org/
 
 
+Installation
+============
+
+::
+
+    pip install requirements-parser
+
+
 Examples
 ========
 
