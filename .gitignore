@@ -5,4 +5,5 @@ docs/_build/*
 *.egg
 dist/
 build/
+.coverage
 venv*
