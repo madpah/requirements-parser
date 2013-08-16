@@ -4,6 +4,8 @@ Requirements Parser
 
 .. image:: https://secure.travis-ci.org/davidfischer/requirements-parser.png?branch=master
     :target: https://travis-ci.org/davidfischer/requirements-parser
+.. image:: https://coveralls.io/repos/davidfischer/requirements-parser/badge.png
+    :target: https://coveralls.io/r/davidfischer/requirements-parser
 
 This is a small Python module for parsing Pip_ requirement files.
 
