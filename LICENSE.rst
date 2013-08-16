@@ -3,7 +3,7 @@ License
 
 Requirements Parser is licensed under the BSD license.
 
-Copyright (c) 2012, David Fischer
+Copyright (c) 2012 - 2013, David Fischer
 
 All rights reserved.
 
