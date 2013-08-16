@@ -32,13 +32,13 @@ def test_requirement_files():
         def check_fail(s):
             with warnings.catch_warnings():
                 warnings.simplefilter("ignore")
-                list(parse(s))
+                list([dict(r) for r in parse(s)])
 
         @fancy
         def check(s, expected):
             with warnings.catch_warnings():
                 warnings.simplefilter("ignore")
-                assert_equal(listify(parse(s)), expected)
+                assert_equal(listify([dict(r) for r in parse(s)]), expected)
 
         fp = os.path.join(REQFILE_DIR, fn)
 

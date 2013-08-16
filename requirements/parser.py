@@ -1,33 +1,6 @@
-import re
 import warnings
-from pkg_resources import Requirement
 
-
-# Compiled regular expressions
-
-uri_regex = re.compile(r'^(svn|git|bzr|hg|http|https|file|ftp):(\.+)')
-file_uri_regex = re.compile(
-    r'^(?P<path>[^#]+)#egg=(?P<name>[^&]+)$', re.MULTILINE)
-editable_uri_regex = re.compile(r'^((?P<vcs>svn|git|bzr|hg)\+)?'
-                                '(?P<uri>[^#&]+)#egg=(?P<name>[^&]+)$',
-                                re.MULTILINE)
-vcs_uri_regex = re.compile(r'^(?P<vcs>svn|git|bzr|hg)\+'
-                           '(?P<uri>[^#&]+)#egg=(?P<name>[^&]+)$',
-                           re.MULTILINE)
-
-# Pip's pip/download.py:is_url() function doesn't check THAT closely
-
-
-def is_uri(uri):
-    uri = uri.lower()
-    match = re.match(uri_regex, uri)
-    return match is not None
-
-
-def is_vcs_uri(uri):
-    uri = uri.lower()
-    match = re.match(vcs_uri_regex, uri)
-    return match is not None
+from .requirement import Requirement
 
 
 # See pip/req.py:parse_requirements()
@@ -60,31 +33,5 @@ def parse(reqstr):
         elif line.startswith('-Z') or line.startswith('--always-unzip'):
             warnings.warn('Unused option --always-unzip. Skipping.')
             continue
-        elif line.startswith('file:'):
-            match = re.match(file_uri_regex, line)
-        elif line.startswith('-e') or line.startswith('--editable') or \
-                is_uri(line) or is_vcs_uri(line):
-            if line.startswith('-e'):
-                tmpstr = line[len('-e'):].strip()
-            elif line.startswith('--editable'):
-                tmpstr = line[len('--editable'):].strip()
-            else:
-                tmpstr = line
-            match = re.match(editable_uri_regex, tmpstr)
         else:
-            try:
-                # Handles inline comments despite not being strictly legal
-                req = Requirement.parse(line)
-                yield {
-                    'name': req.project_name,
-                    'extras': list(req.extras),
-                    'specs': req.specs,
-                }
-                continue
-            except ValueError:
-                match = None
-
-        if match:
-            yield match.groupdict()
-        else:
-            raise ValueError('Invalid requirement line "%s"' % line)
+            yield Requirement.parse(line)

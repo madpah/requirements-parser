@@ -1,27 +1,67 @@
 [
  {
-  "extras": [], 
+  "specifier": true, 
+  "local_file": false, 
   "name": "psycopg2", 
-  "specs": []
+  "editable": false, 
+  "uri": null, 
+  "extras": [], 
+  "vcs": null, 
+  "path": null, 
+  "line": "psycopg2", 
+  "specs": [], 
+  "revision": null
  }, 
  {
-  "extras": [], 
+  "specifier": true, 
+  "local_file": false, 
   "name": "gunicorn", 
-  "specs": []
+  "editable": false, 
+  "uri": null, 
+  "extras": [], 
+  "vcs": null, 
+  "path": null, 
+  "line": "gunicorn", 
+  "specs": [], 
+  "revision": null
  }, 
  {
-  "extras": [], 
+  "specifier": true, 
+  "local_file": false, 
   "name": "pysolr", 
-  "specs": []
+  "editable": false, 
+  "uri": null, 
+  "extras": [], 
+  "vcs": null, 
+  "path": null, 
+  "line": "pysolr", 
+  "specs": [], 
+  "revision": null
  }, 
  {
-  "extras": [], 
+  "specifier": true, 
+  "local_file": false, 
   "name": "python-memcached", 
-  "specs": []
+  "editable": false, 
+  "uri": null, 
+  "extras": [], 
+  "vcs": null, 
+  "path": null, 
+  "line": "python-memcached", 
+  "specs": [], 
+  "revision": null
  }, 
  {
-  "extras": [], 
+  "specifier": true, 
+  "local_file": false, 
   "name": "dnspython", 
-  "specs": []
+  "editable": false, 
+  "uri": null, 
+  "extras": [], 
+  "vcs": null, 
+  "path": null, 
+  "line": "dnspython", 
+  "specs": [], 
+  "revision": null
  }
 ]

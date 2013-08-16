@@ -1,12 +1,27 @@
 [
  {
+  "specifier": false, 
+  "local_file": false, 
+  "name": "requirements", 
+  "editable": true, 
+  "uri": "git+https://github.com/davidfischer/requirements-parser.git", 
+  "extras": [], 
   "vcs": "git", 
-  "uri": "https://github.com/davidfischer/requirements-parser.git", 
-  "name": "requirements"
+  "path": null, 
+  "line": "-e git+https://github.com/davidfischer/requirements-parser.git#egg=requirements", 
+  "specs": [], 
+  "revision": null
  }, 
  {
-  "extras": [], 
+  "specifier": true, 
+  "local_file": false, 
   "name": "Django", 
+  "editable": false, 
+  "uri": null, 
+  "extras": [], 
+  "vcs": null, 
+  "path": null, 
+  "line": "Django >=1.5, <1.6", 
   "specs": [
    [
     ">=", 
@@ -16,18 +31,35 @@
     "<", 
     "1.6"
    ]
-  ]
+  ], 
+  "revision": null
  }, 
  {
-  "extras": [], 
+  "specifier": true, 
+  "local_file": false, 
   "name": "numpy", 
-  "specs": []
+  "editable": false, 
+  "uri": null, 
+  "extras": [], 
+  "vcs": null, 
+  "path": null, 
+  "line": "numpy", 
+  "specs": [], 
+  "revision": null
  }, 
  {
+  "specifier": true, 
+  "local_file": false, 
+  "name": "DocParser", 
+  "editable": false, 
+  "uri": null, 
   "extras": [
    "pdf"
   ], 
-  "name": "DocParser", 
-  "specs": []
+  "vcs": null, 
+  "path": null, 
+  "line": "DocParser [PDF]", 
+  "specs": [], 
+  "revision": null
  }
 ]

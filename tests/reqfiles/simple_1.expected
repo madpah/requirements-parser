@@ -1,37 +1,69 @@
 [
  {
-  "extras": [], 
+  "specifier": true, 
+  "local_file": false, 
   "name": "z3c.checkversions", 
+  "editable": false, 
+  "uri": null, 
+  "extras": [], 
+  "vcs": null, 
+  "path": null, 
+  "line": "z3c.checkversions==0.4.1", 
   "specs": [
    [
     "==", 
     "0.4.1"
    ]
-  ]
+  ], 
+  "revision": null
  }, 
  {
-  "extras": [], 
+  "specifier": true, 
+  "local_file": false, 
   "name": "MyPackage", 
-  "specs": []
+  "editable": false, 
+  "uri": null, 
+  "extras": [], 
+  "vcs": null, 
+  "path": null, 
+  "line": "MyPackage", 
+  "specs": [], 
+  "revision": null
  }, 
  {
-  "extras": [], 
+  "specifier": true, 
+  "local_file": false, 
   "name": "Framework", 
+  "editable": false, 
+  "uri": null, 
+  "extras": [], 
+  "vcs": null, 
+  "path": null, 
+  "line": "Framework==0.9.4", 
   "specs": [
    [
     "==", 
     "0.9.4"
    ]
-  ]
+  ], 
+  "revision": null
  }, 
  {
-  "extras": [], 
+  "specifier": true, 
+  "local_file": false, 
   "name": "Library", 
+  "editable": false, 
+  "uri": null, 
+  "extras": [], 
+  "vcs": null, 
+  "path": null, 
+  "line": "Library>=0.2", 
   "specs": [
    [
     ">=", 
     "0.2"
    ]
-  ]
+  ], 
+  "revision": null
  }
 ]

@@ -1,0 +1,5 @@
+-e svn+svn://svn.myproject.org/svn/MyProject#egg=MyProject
+-e svn+http://svn.myproject.org/svn/MyProject/trunk@2019#egg=MyProject
+
+svn+svn://svn.myproject.org/svn/MyProject#egg=MyProject
+svn+http://svn.myproject.org/svn/MyProject/trunk@2019#egg=MyProject
