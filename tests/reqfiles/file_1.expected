@@ -1,10 +1,41 @@
 [
  {
-  "path": "file:///path/to/your/lib/project", 
-  "name": "MyProject"
+  "specifier": false, 
+  "local_file": true, 
+  "name": "MyProject", 
+  "editable": false, 
+  "uri": "file:///path/to/your/lib/project", 
+  "extras": [], 
+  "vcs": null, 
+  "path": null, 
+  "line": "file:///path/to/your/lib/project#egg=MyProject", 
+  "specs": [], 
+  "revision": null
  }, 
  {
-  "path": "file:../../lib/project", 
-  "name": "MyProject"
+  "specifier": false, 
+  "local_file": true, 
+  "name": "MyProject", 
+  "editable": false, 
+  "uri": "file://../../lib/project", 
+  "extras": [], 
+  "vcs": null, 
+  "path": null,
+  "line": "file://../../lib/project#egg=MyProject", 
+  "specs": [], 
+  "revision": null
+ },
+ {
+  "specifier": false, 
+  "local_file": true, 
+  "name": "SomeOtherProject", 
+  "editable": false, 
+  "uri": null, 
+  "extras": [], 
+  "vcs": null, 
+  "path": "path/to/SomeProject",
+  "line": "path/to/SomeProject#egg=SomeOtherProject",
+  "specs": [], 
+  "revision": null
  }
 ]
