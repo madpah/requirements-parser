@@ -1,7 +1,7 @@
 Changelog
 =========
 
-**Version 0.0.5** (?? August 2013)
+**Version 0.0.5** (16 August 2013)
 
 * **Backwards incompatible change** to refactor the parser.
 * Parser now handles VCS specific revisions and parses out data such as
