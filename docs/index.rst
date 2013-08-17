@@ -34,6 +34,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   usage
    changelog
    lowlevel
 
