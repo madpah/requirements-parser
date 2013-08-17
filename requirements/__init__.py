@@ -2,7 +2,7 @@ from .parser import parse   # noqa
 
 _MAJOR = 0
 _MINOR = 0
-_PATCH = 4
+_PATCH = 5
 
 
 def version_tuple():
