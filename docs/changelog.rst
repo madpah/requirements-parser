@@ -1,6 +1,11 @@
 Changelog
 =========
 
+**Version 0.0.6** (16 August 2013)
+
+* Fixed a packaging error in v0.0.5
+
+
 **Version 0.0.5** (16 August 2013)
 
 * **Backwards incompatible change** to refactor the parser.
