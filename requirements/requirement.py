@@ -157,7 +157,7 @@ class Requirement(object):
             # Delegate to pkg_resources and hope for the best
             req.specifier = True
             pkg_req = Req.parse(line)
-            req.name = pkg_req.project_name
+            req.name = pkg_req.unsafe_name
             req.extras = list(pkg_req.extras)
             req.specs = pkg_req.specs
         return req
