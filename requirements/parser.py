@@ -32,7 +32,8 @@ def parse(reqstr):
             continue
         elif line.startswith('-r') or line.startswith('--requirement'):
             _, new_filename = line.split()
-            new_file_path = os.path.join(os.path.dirname(filename or '.'), new_filename)
+            new_file_path = os.path.join(os.path.dirname(filename or '.'),
+                                         new_filename)
             with open(new_file_path) as f:
                 for requirement in parse(f):
                     yield requirement
