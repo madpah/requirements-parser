@@ -1,3 +1,4 @@
+import os
 import warnings
 
 from .requirement import Requirement
@@ -12,7 +13,7 @@ def parse(reqstr):
     :param reqstr: a string or file like object containing requirements
     :returns: a *generator* of Requirement objects
     """
-
+    filename = getattr(reqstr, 'name', None)
     try:
         # Python 2.x compatibility
         if not isinstance(reqstr, basestring):
@@ -30,8 +31,12 @@ def parse(reqstr):
             # comments are lines that start with # only
             continue
         elif line.startswith('-r') or line.startswith('--requirement'):
-            warnings.warn('Recursive requirements not supported. Skipping.')
-            continue
+            _, new_filename = line.split()
+            new_file_path = os.path.join(os.path.dirname(filename or '.'),
+                                         new_filename)
+            with open(new_file_path) as f:
+                for requirement in parse(f):
+                    yield requirement
         elif line.startswith('-f') or line.startswith('--find-links') or \
                 line.startswith('-i') or line.startswith('--index-url') or \
                 line.startswith('--extra-index-url') or \

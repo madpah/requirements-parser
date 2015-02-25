@@ -46,11 +46,9 @@ def test_requirement_files():
         if not os.path.isfile(fp) or not fp.endswith('.txt'):
             continue
 
-        with open(fp, 'r') as f:
-            txt = f.read()
-            if 'fail' in fn:
-                yield check_fail, txt
-            else:
-                with open(fp[:-4] + '.expected', 'r') as f2:
-                    expected = json.loads(f2.read())
-                    yield check, txt, expected
+        if 'fail' in fn:
+            yield check_fail, open(fp)
+        else:
+            with open(fp[:-4] + '.expected', 'r') as f2:
+                expected = json.loads(f2.read())
+                yield check, open(fp), expected
