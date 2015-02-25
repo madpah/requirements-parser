@@ -1,0 +1,28 @@
+[
+  {
+    "specifier": true,
+    "local_file": false,
+    "name": "ipdb",
+    "editable": false,
+    "uri": null,
+    "extras": [],
+    "vcs": null,
+    "path": null,
+    "line": "ipdb",
+    "specs": [],
+    "revision": null
+  },
+  {
+    "specifier": true,
+    "local_file": false,
+    "name": "Jinja",
+    "editable": false,
+    "uri": null,
+    "extras": [],
+    "vcs": null,
+    "path": null,
+    "line": "Jinja",
+    "specs": [],
+    "revision": null
+  }
+]

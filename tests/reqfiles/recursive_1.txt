@@ -1,0 +1,2 @@
+-r recursive_2.txt
+Django==1.6
