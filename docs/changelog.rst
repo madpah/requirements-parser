@@ -1,6 +1,15 @@
 Changelog
 =========
 
+**Version 0.1.0** (2 May 2015)
+
+* Fix a bug involving parsing projects with underscores (`#17`_)
+* Parse recursive requirements (`#19`_)
+
+.. _#17: https://github.com/davidfischer/requirements-parser/pull/17
+.. _#19: https://github.com/davidfischer/requirements-parser/pull/19
+
+
 **Version 0.0.6** (16 August 2013)
 
 * Fixed a packaging error in v0.0.5
