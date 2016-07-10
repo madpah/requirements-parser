@@ -2,12 +2,13 @@ from __future__ import unicode_literals
 import re
 from pkg_resources import Requirement as Req
 
+from .fragment import parse_fragment
 from .vcs import VCS, VCS_SCHEMES
 
 
 URI_REGEX = re.compile(
     r'^(?P<scheme>https?|file|ftps?)://(?P<path>[^#]+)'
-    r'(#egg=(?P<name>[^&]+))?$'
+    r'(#(?P<fragment>\S+))?'
 )
 
 VCS_REGEX = re.compile(
@@ -16,14 +17,14 @@ VCS_REGEX = re.compile(
     r'((?P<login>[^/@]+)@)?'
     r'(?P<path>[^#@]+)'
     r'(@(?P<revision>[^#]+))?'
-    r'(#egg=(?P<name>[^&]+))?$'
+    r'(#(?P<fragment>\S+))?'
 )
 
 # This matches just about everyting
 LOCAL_REGEX = re.compile(
     r'^((?P<scheme>file)://)?'
-    r'(?P<path>[^#]+)'
-    r'(#egg=(?P<name>[^&]+))?$'
+    r'(?P<path>[^#]+)' +
+    r'(#(?P<fragment>\S+))?'
 )
 
 
@@ -100,7 +101,9 @@ class Requirement(object):
             groups = vcs_match.groupdict()
             req.uri = '{scheme}://{path}'.format(**groups)
             req.revision = groups['revision']
-            req.name = groups['name']
+            if groups['fragment']:
+                fragment = parse_fragment(groups['fragment'])
+                req.name = fragment.get('egg')
             for vcs in VCS:
                 if req.uri.startswith(vcs):
                     req.vcs = vcs
@@ -108,7 +111,9 @@ class Requirement(object):
             assert local_match is not None, 'This should match everything'
             groups = local_match.groupdict()
             req.local_file = True
-            req.name = groups['name']
+            if groups['fragment']:
+                fragment = parse_fragment(groups['fragment'])
+                req.name = fragment.get('egg')
             req.path = groups['path']
 
         return req
@@ -135,14 +140,18 @@ class Requirement(object):
             groups = vcs_match.groupdict()
             req.uri = '{scheme}://{path}'.format(**groups)
             req.revision = groups['revision']
-            req.name = groups['name']
+            if groups['fragment']:
+                fragment = parse_fragment(groups['fragment'])
+                req.name = fragment.get('egg')
             for vcs in VCS:
                 if req.uri.startswith(vcs):
                     req.vcs = vcs
         elif uri_match is not None:
             groups = uri_match.groupdict()
             req.uri = '{scheme}://{path}'.format(**groups)
-            req.name = groups['name']
+            if groups['fragment']:
+                fragment = parse_fragment(groups['fragment'])
+                req.name = fragment.get('egg')
             if groups['scheme'] == 'file':
                 req.local_file = True
         elif '#egg=' in line:
@@ -150,7 +159,9 @@ class Requirement(object):
             assert local_match is not None, 'This should match everything'
             groups = local_match.groupdict()
             req.local_file = True
-            req.name = groups['name']
+            if groups['fragment']:
+                fragment = parse_fragment(groups['fragment'])
+                req.name = fragment.get('egg')
             req.path = groups['path']
         else:
             # This is a requirement specifier.
