@@ -8,7 +8,9 @@
   "extras": [],
   "vcs": null,
   "path": null,
-  "line": "a_b>=1.0",
+  "line":  "a_b>=1.0",
+  "hash_name": null,
+  "hash": null,
   "specs": [
    [
     ">=",

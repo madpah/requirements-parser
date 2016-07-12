@@ -8,8 +8,9 @@
     "extras": [],
     "vcs": null,
     "path": null,
-    "line": "ipdb",
-    "specs": [],
+    "line":  "ipdb",
+    "hash_name": null,
+    "hash": null,    "specs": [],
     "revision": null
   },
   {
@@ -21,8 +22,9 @@
     "extras": [],
     "vcs": null,
     "path": null,
-    "line": "Jinja",
-    "specs": [],
+    "line":  "Jinja",
+    "hash_name": null,
+    "hash": null,    "specs": [],
     "revision": null
   },
   {
@@ -34,8 +36,9 @@
     "extras": [],
     "vcs": null,
     "path": null,
-    "line": "Django==1.6",
-    "specs": [
+    "line":  "Django==1.6",
+    "hash_name": null,
+    "hash": null,    "specs": [
       [
         "==",
         "1.6"

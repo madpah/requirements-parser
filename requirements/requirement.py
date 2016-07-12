@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 import re
 from pkg_resources import Requirement as Req
 
-from .fragment import parse_fragment
+from .fragment import get_hash_info, parse_fragment
 from .vcs import VCS, VCS_SCHEMES
 
 
@@ -50,6 +50,8 @@ class Requirement(object):
     * ``name`` - the name of the requirement
     * ``uri`` - the URI if this requirement was specified by URI
     * ``path`` - the local path to the requirement
+    * ``hash_name`` - the type of hashing algorithm indicated in the line
+    * ``hash`` - the hash value indicated by the requirement line
     * ``extras`` - a list of extras for this requirement
       (eg. "mymodule[extra1, extra2]")
     * ``specs`` - a list of specs for this requirement
@@ -67,6 +69,8 @@ class Requirement(object):
         self.uri = None
         self.path = None
         self.revision = None
+        self.hash_name = None
+        self.hash = None
         self.extras = []
         self.specs = []
 
@@ -104,6 +108,7 @@ class Requirement(object):
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
                 req.name = fragment.get('egg')
+                req.hash_name, req.hash = get_hash_info(fragment)
             for vcs in VCS:
                 if req.uri.startswith(vcs):
                     req.vcs = vcs
@@ -114,6 +119,7 @@ class Requirement(object):
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
                 req.name = fragment.get('egg')
+                req.hash_name, req.hash = get_hash_info(fragment)
             req.path = groups['path']
 
         return req
@@ -143,6 +149,7 @@ class Requirement(object):
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
                 req.name = fragment.get('egg')
+                req.hash_name, req.hash = get_hash_info(fragment)
             for vcs in VCS:
                 if req.uri.startswith(vcs):
                     req.vcs = vcs
@@ -152,6 +159,7 @@ class Requirement(object):
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
                 req.name = fragment.get('egg')
+                req.hash_name, req.hash = get_hash_info(fragment)
             if groups['scheme'] == 'file':
                 req.local_file = True
         elif '#egg=' in line:
@@ -162,6 +170,7 @@ class Requirement(object):
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
                 req.name = fragment.get('egg')
+                req.hash_name, req.hash = get_hash_info(fragment)
             req.path = groups['path']
         else:
             # This is a requirement specifier.
