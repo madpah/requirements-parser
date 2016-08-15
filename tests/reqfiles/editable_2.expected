@@ -1,0 +1,54 @@
+[
+ {
+  "specifier": false,
+  "local_file": false,
+  "name": "MyProject",
+  "editable": true,
+  "uri": "svn+svn://svn.myproject.org/svn/MyProject",
+  "extras": [],
+  "vcs": "svn",
+  "path": null,
+  "line": "-e svn+svn://svn.myproject.org/svn/MyProject#egg=MyProject # Test comment",
+  "specs": [],
+  "revision": null
+ },
+ {
+  "specifier": false,
+  "local_file": false,
+  "name": "MyProject",
+  "editable": true,
+  "uri": "git://git.myproject.org/MyProject.git",
+  "extras": [],
+  "vcs": "git",
+  "path": null,
+  "line": "-e git://git.myproject.org/MyProject.git@da39a3ee5e6b4b0d3255bfef95601890afd80709#egg=MyProject # Test comment",
+  "specs": [],
+  "revision": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+ },
+ {
+  "specifier": false,
+  "local_file": false,
+  "name": "MyProject",
+  "editable": true,
+  "uri": "hg+http://hg.myproject.org/MyProject/",
+  "extras": [],
+  "vcs": "hg",
+  "path": null,
+  "line": "-e hg+http://hg.myproject.org/MyProject/@special_feature#egg=MyProject # Test comment",
+  "specs": [],
+  "revision": "special_feature"
+ },
+ {
+  "specifier": false,
+  "local_file": false,
+  "name": "MyProject",
+  "editable": true,
+  "uri": "bzr+lp://MyProject",
+  "extras": [],
+  "vcs": "bzr",
+  "path": null,
+  "line": "-e bzr+lp://MyProject#egg=MyProject # Test comment",
+  "specs": [],
+  "revision": null
+ }
+]
