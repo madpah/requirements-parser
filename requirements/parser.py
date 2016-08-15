@@ -25,12 +25,14 @@ def parse(reqstr):
 
     for line in reqstr.splitlines():
         line = line.strip()
-        if line == '':
+        if not line or line.startswith('#'):
+            # If the line is empty or it starts with a # we can ignore it
             continue
-        elif not line or line.startswith('#'):
-            # comments are lines that start with # only
-            continue
-        elif line.startswith('-r') or line.startswith('--requirement'):
+
+        if ' #' in line:
+            line = line[:line.find(' #')]
+
+        if line.startswith('-r') or line.startswith('--requirement'):
             _, new_filename = line.split()
             new_file_path = os.path.join(os.path.dirname(filename or '.'),
                                          new_filename)
