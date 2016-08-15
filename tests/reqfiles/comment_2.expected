@@ -8,7 +8,7 @@
   "extras": [], 
   "vcs": null, 
   "path": null, 
-  "line": "req==1.0    # comment", 
+  "line": "req==1.0", 
   "specs": [
    [
     "==", 
