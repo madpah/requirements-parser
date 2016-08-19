@@ -9,7 +9,7 @@ python:
   - "2.6"
 
 install:
-  - pip install flake8 'coverage<4' coveralls
+  - pip install 'flake8<3' 'coverage<4' coveralls
 
 script:
   - coverage run setup.py test
