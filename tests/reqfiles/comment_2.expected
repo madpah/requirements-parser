@@ -1,20 +1,22 @@
 [
  {
-  "specifier": true, 
-  "local_file": false, 
-  "name": "req", 
-  "editable": false, 
-  "uri": null, 
-  "extras": [], 
-  "vcs": null, 
-  "path": null, 
-  "line": "req==1.0    # comment", 
+  "specifier": true,
+  "local_file": false,
+  "name": "req",
+  "editable": false,
+  "uri": null,
+  "extras": [],
+  "vcs": null,
+  "path": null,
+  "line":  "req==1.0    # comment",
+  "hash_name": null,
+  "hash": null,
   "specs": [
    [
-    "==", 
+    "==",
     "1.0"
    ]
-  ], 
+  ],
   "revision": null
  }
 ]

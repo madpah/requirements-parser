@@ -8,7 +8,9 @@
         "extras": [],
         "vcs": null,
         "path": null,
-        "line": "ipdb",
+        "line":  "ipdb",
+        "hash_name": null,
+        "hash": null,
         "specs": [],
         "revision": null
     }

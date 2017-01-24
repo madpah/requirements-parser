@@ -1,69 +1,77 @@
 [
  {
-  "specifier": true, 
-  "local_file": false, 
-  "name": "z3c.checkversions", 
-  "editable": false, 
-  "uri": null, 
-  "extras": [], 
-  "vcs": null, 
-  "path": null, 
-  "line": "z3c.checkversions==0.4.1", 
+  "specifier": true,
+  "local_file": false,
+  "name": "z3c.checkversions",
+  "editable": false,
+  "uri": null,
+  "extras": [],
+  "vcs": null,
+  "path": null,
+  "line":  "z3c.checkversions==0.4.1",
+  "hash_name": null,
+  "hash": null,
   "specs": [
    [
-    "==", 
+    "==",
     "0.4.1"
    ]
-  ], 
+  ],
   "revision": null
- }, 
+ },
  {
-  "specifier": true, 
-  "local_file": false, 
-  "name": "MyPackage", 
-  "editable": false, 
-  "uri": null, 
-  "extras": [], 
-  "vcs": null, 
-  "path": null, 
-  "line": "MyPackage", 
+  "specifier": true,
+  "local_file": false,
+  "name": "MyPackage",
+  "editable": false,
+  "uri": null,
+  "extras": [],
+  "vcs": null,
+  "path": null,
+  "line":  "MyPackage",
+  "hash_name": null,
+  "hash": null,
   "specs": [], 
   "revision": null
- }, 
+ },
  {
-  "specifier": true, 
-  "local_file": false, 
-  "name": "Framework", 
-  "editable": false, 
-  "uri": null, 
-  "extras": [], 
-  "vcs": null, 
-  "path": null, 
-  "line": "Framework==0.9.4", 
+  "specifier": true,
+  "local_file": false,
+  "name": "Framework",
+  "editable": false,
+  "uri": null,
+  "extras": [],
+  "vcs": null,
+  "path": null,
+  "line":  "Framework==0.9.4",
+  "hash_name": null,
+  "hash": null,
   "specs": [
    [
-    "==", 
+    "==",
     "0.9.4"
    ]
-  ], 
+  ],
   "revision": null
- }, 
+ },
  {
-  "specifier": true, 
-  "local_file": false, 
-  "name": "Library", 
-  "editable": false, 
-  "uri": null, 
-  "extras": [], 
-  "vcs": null, 
-  "path": null, 
-  "line": "Library>=0.2", 
+  "specifier": true,
+  "local_file": false,
+  "name": "Library",
+  "editable": false,
+  "uri": null,
+  "extras": [],
+  "vcs": null,
+  "path": null,
+  "line":  "Library>=0.2",
+  "hash_name": null,
+  "hash": null,
   "specs": [
    [
-    ">=", 
+    ">=",
     "0.2"
    ]
-  ], 
+  ],
   "revision": null
  }
 ]
