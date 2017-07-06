@@ -1,0 +1,17 @@
+[
+ {
+  "specifier": false,
+  "local_file": false,
+  "name": "MyProject",
+  "editable": false,
+  "uri": "git+https://git.myproject.org/MyProject.git",
+  "extras": ["security"],
+  "vcs": "git",
+  "path": null,
+  "line":  "git+https://git.myproject.org/MyProject.git@v0.1#egg=MyProject[security]",
+  "hash_name": null,
+  "hash": null,
+  "specs": [],
+  "revision": "v0.1"
+ }
+]

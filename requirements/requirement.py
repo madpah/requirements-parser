@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 import re
 from pkg_resources import Requirement as Req
 
-from .fragment import get_hash_info, parse_fragment
+from .fragment import get_hash_info, parse_fragment, parse_extras_require
 from .vcs import VCS, VCS_SCHEMES
 
 
@@ -107,7 +107,8 @@ class Requirement(object):
             req.revision = groups['revision']
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
-                req.name = fragment.get('egg')
+                egg = fragment.get('egg')
+                req.name, req.extras = parse_extras_require(egg)
                 req.hash_name, req.hash = get_hash_info(fragment)
             for vcs in VCS:
                 if req.uri.startswith(vcs):
@@ -118,7 +119,8 @@ class Requirement(object):
             req.local_file = True
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
-                req.name = fragment.get('egg')
+                egg = fragment.get('egg')
+                req.name, req.extras = parse_extras_require(egg)
                 req.hash_name, req.hash = get_hash_info(fragment)
             req.path = groups['path']
 
@@ -148,7 +150,8 @@ class Requirement(object):
             req.revision = groups['revision']
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
-                req.name = fragment.get('egg')
+                egg = fragment.get('egg')
+                req.name, req.extras = parse_extras_require(egg)
                 req.hash_name, req.hash = get_hash_info(fragment)
             for vcs in VCS:
                 if req.uri.startswith(vcs):
@@ -158,7 +161,8 @@ class Requirement(object):
             req.uri = '{scheme}://{path}'.format(**groups)
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
-                req.name = fragment.get('egg')
+                egg = fragment.get('egg')
+                req.name, req.extras = parse_extras_require(egg)
                 req.hash_name, req.hash = get_hash_info(fragment)
             if groups['scheme'] == 'file':
                 req.local_file = True
@@ -169,6 +173,8 @@ class Requirement(object):
             req.local_file = True
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
+                egg = fragment.get('egg')
+                name, extras = parse_extras_require(egg)
                 req.name = fragment.get('egg')
                 req.hash_name, req.hash = get_hash_info(fragment)
             req.path = groups['path']

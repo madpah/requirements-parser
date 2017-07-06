@@ -27,3 +27,10 @@ def get_hash_info(d):
             return key, d[key]
 
     return None, None
+
+
+def parse_extras_require(egg):
+    if egg is not None and ('[' and ']') in egg:
+        name, _, extras = egg.partition('[')
+        return name, [extra.strip() for extra in extras[:-1].split(',')]
+    return egg, []
