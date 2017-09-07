@@ -14,7 +14,12 @@ def listify(iterable):
         if isinstance(item, dict):
             for key in item:
                 if isinstance(item[key], tuple) or isinstance(item[key], list):
-                    item[key] = listify(item[key])
+                    if key == 'specs':
+                        item[key] = set(tuple(i) for i in item[key])
+                    elif key == 'extras':
+                        item[key] = set(item[key])
+                    else:
+                        item[key] = listify(item[key])
         elif isinstance(item, tuple) or isinstance(item, list):
             item = listify(item)
         out.append(item)
@@ -38,7 +43,7 @@ def test_requirement_files():
         def check(s, expected):
             with warnings.catch_warnings():
                 warnings.simplefilter("ignore")
-                assert_equal(listify([dict(r) for r in parse(s)]), expected)
+                assert_equal(listify([dict(r) for r in parse(s)]), listify(expected))
 
         fp = os.path.join(REQFILE_DIR, fn)
 
