@@ -1,0 +1,2 @@
+-e git+git://git.myproject.org/MyProject#egg=MyProject&subdirectory=setup
+git+git://git.myproject.org/MyProject#egg=MyProject&subdirectory=setup

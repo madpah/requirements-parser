@@ -4,6 +4,7 @@
   "local_file": false,
   "name": "MyPackage",
   "editable": false,
+  "subdirectory": null,
   "uri": null,
   "extras": [
    "pdf"
@@ -26,6 +27,7 @@
   "local_file": false,
   "name": "Fizzy",
   "editable": false,
+  "subdirectory": null,
   "uri": null,
   "extras": [
    "foo",
