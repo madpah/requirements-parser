@@ -4,6 +4,7 @@
   "local_file": false,
   "name": "a_b",
   "editable": false,
+  "subdirectory": null,
   "uri": null,
   "extras": [],
   "vcs": null,

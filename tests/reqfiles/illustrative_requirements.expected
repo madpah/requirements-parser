@@ -4,6 +4,7 @@
   "local_file": false,
   "name": "requirements",
   "editable": true,
+  "subdirectory": null,
   "uri": "git+https://github.com/davidfischer/requirements-parser.git",
   "extras": [],
   "vcs": "git",
@@ -19,6 +20,7 @@
   "local_file": false,
   "name": "Django",
   "editable": false,
+  "subdirectory": null,
   "uri": null,
   "extras": [],
   "vcs": null,
@@ -43,6 +45,7 @@
   "local_file": false,
   "name": "numpy",
   "editable": false,
+  "subdirectory": null,
   "uri": null,
   "extras": [],
   "vcs": null,
@@ -58,6 +61,7 @@
   "local_file": false,
   "name": "DocParser",
   "editable": false,
+  "subdirectory": null,
   "uri": null,
   "extras": [
    "pdf"

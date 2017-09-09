@@ -49,6 +49,7 @@ class Requirement(object):
     * ``revision`` - a version control system specifier
     * ``name`` - the name of the requirement
     * ``uri`` - the URI if this requirement was specified by URI
+    * ``subdirectory`` - the subdirectory fragment of the URI
     * ``path`` - the local path to the requirement
     * ``hash_name`` - the type of hashing algorithm indicated in the line
     * ``hash`` - the hash value indicated by the requirement line
@@ -66,6 +67,7 @@ class Requirement(object):
         self.specifier = False
         self.vcs = None
         self.name = None
+        self.subdirectory = None
         self.uri = None
         self.path = None
         self.revision = None
@@ -110,6 +112,7 @@ class Requirement(object):
                 egg = fragment.get('egg')
                 req.name, req.extras = parse_extras_require(egg)
                 req.hash_name, req.hash = get_hash_info(fragment)
+                req.subdirectory = fragment.get('subdirectory')
             for vcs in VCS:
                 if req.uri.startswith(vcs):
                     req.vcs = vcs
@@ -122,6 +125,7 @@ class Requirement(object):
                 egg = fragment.get('egg')
                 req.name, req.extras = parse_extras_require(egg)
                 req.hash_name, req.hash = get_hash_info(fragment)
+                req.subdirectory = fragment.get('subdirectory')
             req.path = groups['path']
 
         return req
@@ -153,6 +157,7 @@ class Requirement(object):
                 egg = fragment.get('egg')
                 req.name, req.extras = parse_extras_require(egg)
                 req.hash_name, req.hash = get_hash_info(fragment)
+                req.subdirectory = fragment.get('subdirectory')
             for vcs in VCS:
                 if req.uri.startswith(vcs):
                     req.vcs = vcs
@@ -164,6 +169,7 @@ class Requirement(object):
                 egg = fragment.get('egg')
                 req.name, req.extras = parse_extras_require(egg)
                 req.hash_name, req.hash = get_hash_info(fragment)
+                req.subdirectory = fragment.get('subdirectory')
             if groups['scheme'] == 'file':
                 req.local_file = True
         elif '#egg=' in line:
@@ -177,6 +183,7 @@ class Requirement(object):
                 name, extras = parse_extras_require(egg)
                 req.name = fragment.get('egg')
                 req.hash_name, req.hash = get_hash_info(fragment)
+                req.subdirectory = fragment.get('subdirectory')
             req.path = groups['path']
         else:
             # This is a requirement specifier.
