@@ -2,14 +2,20 @@ Requirements Parser
 ===================
 
 
-.. image:: https://secure.travis-ci.org/davidfischer/requirements-parser.png?branch=master
+.. image:: https://travis-ci.org/davidfischer/requirements-parser.svg?branch=master
     :target: https://travis-ci.org/davidfischer/requirements-parser
-.. image:: https://coveralls.io/repos/davidfischer/requirements-parser/badge.png
-    :target: https://coveralls.io/r/davidfischer/requirements-parser
+.. image:: https://coveralls.io/repos/github/davidfischer/requirements-parser/badge.svg?branch=master
+    :target: https://coveralls.io/github/davidfischer/requirements-parser?branch=master
+.. image:: http://readthedocs.org/projects/requirements-parser/badge/?version=latest
+    :target: http://requirements-parser.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
 
 This is a small Python module for parsing Pip_ requirement files.
 
+The goal is to parse everything in the `Pip requirement file format`_ spec.
+
 .. _Pip: http://www.pip-installer.org/
+.. _Pip requirement file format: https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format
 
 
 Installation
@@ -25,15 +31,27 @@ Examples
 
 Requirements parser can parse a file-like object or a text string.
 
-::
+.. code-block:: python
 
     >>> import requirements
-    >>> reqfile = """
-    ...     Django>=1.5,<1.6
-    ...     DocParser[PDF]==1.0.0
-    ...     """
-    >>> for req in requirements.parse(reqfile):
-    ...     print(req.name, req.specs, req.extras)
-    ...
-    ('Django', [('>=', '1.5'), ('<', '1.6')], [])
-    ('DocParser', [('==', '1.0.0')], ['pdf'])
+    >>> with open('requirements.txt', 'r') as fd:
+    ...     for req in requirements.parse(fd):
+    ...         print(req.name, req.specs)
+    Django [('>=', '1.11'), ('<', '1.12')]
+    six [('==', '1.10.0')]
+
+It can handle most if not all of the options in requirement files that do
+not involve traversing the local filesystem. These include:
+
+* editables (`-e git+https://github.com/toastdriven/pyelasticsearch.git`)
+* version control URIs
+* egg hashes and subdirectories (`#egg=django-haystack&subdirectory=setup`)
+* extras (`DocParser[PDF]`)
+* URLs
+
+
+Documentation
+=============
+
+For more details and examples, the documentation is available at:
+http://requirements-parser.readthedocs.io.
