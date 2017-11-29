@@ -82,6 +82,21 @@ class Requirement(object):
     def __getitem__(self, key):
         return getattr(self, key)
 
+    def __eq__(self, other):
+        return all([
+            self.name == other.name,
+            set(self.specs) == set(other.specs),
+            self.editable == other.editable,
+            self.specifier == other.specifier,
+            self.revision == other.revision,
+            self.hash_name == other.hash_name,
+            self.hash == other.hash,
+            set(self.extras) == set(other.extras),
+        ])
+
+    def __ne__(self, other):
+        return not self == other
+
     def keys(self):
         return self.__dict__.keys()
 

@@ -56,3 +56,4 @@ def test_requirement_files():
             with open(fp[:-4] + '.expected', 'r') as f2:
                 expected = json.loads(f2.read())
                 yield check, open(fp), expected
+
