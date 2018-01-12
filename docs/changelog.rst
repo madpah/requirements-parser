@@ -1,6 +1,21 @@
 Changelog
 =========
 
+**Version 0.2.0** (11 Jan 2018)
+
+This release dropped support for Python 3.2.
+
+* Support multiple hashing algorithms at the end of the URL (`#24`_)
+* Preserve login info in requirement URI (`#33`_)
+* Support subdirectory fragments (`#32`_)
+* Support version control URLs with extras (`#30`_)
+
+.. _#24: https://github.com/davidfischer/requirements-parser/pull/24
+.. _#33: https://github.com/davidfischer/requirements-parser/pull/33
+.. _#32: https://github.com/davidfischer/requirements-parser/pull/32
+.. _#30: https://github.com/davidfischer/requirements-parser/pull/30
+
+
 **Version 0.1.0** (2 May 2015)
 
 * Fix a bug involving parsing projects with underscores (`#17`_)
