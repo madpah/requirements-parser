@@ -115,6 +115,10 @@ class Requirement(object):
 
         req = cls('-e {0}'.format(line))
         req.editable = True
+
+        if ' #' in line:
+            line = line[:line.find(' #')]
+
         vcs_match = VCS_REGEX.match(line)
         local_match = LOCAL_REGEX.match(line)
 
