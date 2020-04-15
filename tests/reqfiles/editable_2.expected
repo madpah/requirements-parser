@@ -10,6 +10,9 @@
   "path": null,
   "line": "-e svn+svn://svn.myproject.org/svn/MyProject#egg=MyProject # Test comment",
   "specs": [],
+  "hash": null,
+  "hash_name": null,
+  "subdirectory": null,
   "revision": null
  },
  {
@@ -23,6 +26,9 @@
   "path": null,
   "line": "-e git://git.myproject.org/MyProject.git@da39a3ee5e6b4b0d3255bfef95601890afd80709#egg=MyProject # Test comment",
   "specs": [],
+  "hash": null,
+  "hash_name": null,
+  "subdirectory": null,
   "revision": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
  },
  {
@@ -36,6 +42,9 @@
   "path": null,
   "line": "-e hg+http://hg.myproject.org/MyProject/@special_feature#egg=MyProject # Test comment",
   "specs": [],
+  "hash": null,
+  "hash_name": null,
+  "subdirectory": null,
   "revision": "special_feature"
  },
  {
@@ -49,6 +58,9 @@
   "path": null,
   "line": "-e bzr+lp://MyProject#egg=MyProject # Test comment",
   "specs": [],
+  "hash": null,
+  "hash_name": null,
+  "subdirectory": null,
   "revision": null
  }
 ]
