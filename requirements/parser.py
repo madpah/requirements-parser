@@ -46,5 +46,20 @@ def parse(reqstr):
         elif line.startswith('-Z') or line.startswith('--always-unzip'):
             warnings.warn('Unused option --always-unzip. Skipping.')
             continue
+        elif line.startswith('-c') or line.startswith('--constraint'):
+            warnings.warn('--constraint option not supported. Skipping.')
+            continue
+        elif line.startswith('--no-binary') or line.startswith('--only-binary'):
+            warnings.warn('--no-binary and --only-binary options not supported. Skipping.')
+            continue
+        elif line.startswith('--require-hashes'):
+            warnings.warn('Unused option --require-hashes. Skipping.')
+            continue
+        elif line.startswith('--pre'):
+            warnings.warn('Unused option --pre. Skipping.')
+            continue
+        elif line.startswith('--trusted-host'):
+            warnings.warn('Unused option --trusted-host. Skipping.')
+            continue
         else:
             yield Requirement.parse(line)
