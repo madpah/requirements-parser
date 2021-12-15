@@ -1,0 +1,73 @@
+[tool.poetry]
+name = "requirements-parser"
+version = "0.2.0"
+description = "This is a small Python module for parsing Pip requirement files."
+authors = [
+    "Paul Horton <simplyecommerce@gmail.com>",
+    "David Fischer (@davidfischer)",
+    "Trey Hunner (@treyhunner)",
+    "Dima Veselov (@dveselov)",
+    "Sascha Peilicke (@saschpe)",
+    "Jayson Reis (@jaysonsantos)",
+    "Max Shenfield (@mshenfield)",
+    "Nicolas Delaby (@ticosax)",
+    "Stéphane Bidoul (@sbidoul)"
+]
+maintainers = ["Paul Horton <simplyecommerce@gmail.com>"]
+license = "Apache-2.0"
+readme = "README.rst"
+homepage = "https://github.com/madpah/requirements-parser"
+repository = "https://github.com/madpah/requirements-parser"
+packages = [
+    { include = "requirements" }
+]
+include = [
+    "AUTHORS.rst",
+    "LICENSE",
+    "README.rst"
+]
+classifiers = [
+    # Trove classifiers - https://packaging.python.org/specifications/core-metadata/#metadata-classifier
+    # Full list: https://pypi.python.org/pypi?%3Aaction=list_classifiers
+    'Development Status :: 5 - Production/Stable',
+    'Intended Audience :: Developers',
+    'Intended Audience :: Information Technology',
+    'Topic :: Software Development',
+    'Topic :: Software Development :: Libraries :: Python Modules',
+    'Topic :: System :: Software Distribution',
+    'License :: OSI Approved :: Apache Software License',
+    'Programming Language :: Python :: 3.6',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+#    'Typing :: Typed'
+]
+keywords = [
+    "Pip", "requirements", "parse"
+]
+
+[tool.poetry.urls]
+"Bug Tracker" = "https://github.com/madpah/requirements-parser/issues"
+
+[tool.poetry.dependencies]
+python = "^3.6"
+
+[tool.poetry.dev-dependencies]
+tox = "^3.24.3"
+coverage = "^6.2"
+mypy = "^0.910"
+flake8 = "^3.9.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.semantic_release]
+version_variable = [
+    "pyproject.toml:version"
+]
+branch = "master"
+upload_to_pypi = true
+upload_to_release = true
+build_command = "pip install poetry && poetry build"
