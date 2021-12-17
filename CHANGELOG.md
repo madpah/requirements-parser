@@ -3,6 +3,10 @@ Changelog
 
 <!--next-version-placeholder-->
 
+## v0.3.1 (2021-12-17)
+### Fix
+* Readthedocs config ([`ac1e7fb`](https://github.com/madpah/requirements-parser/commit/ac1e7fb616a2c15e83b8a5ca630ffd50aad4aedb))
+
 ## v0.3.0 (2021-12-17)
 ### Feature
 * Added some typing ([`169ff6e`](https://github.com/madpah/requirements-parser/commit/169ff6e79657d8091e6e1a4e21c7da794d507832))
