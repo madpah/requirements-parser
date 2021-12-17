@@ -56,8 +56,8 @@ jobs:
             python-version: '3.10'
             toxenv-factor: 'locked'
           - # test with the lowest dependencies
-            python-version: '3.6'
-            toxenv-factor: 'lowest'
+#            python-version: '3.6'
+#            toxenv-factor: 'lowest'
     steps:
       - name: Checkout
         # see https://github.com/actions/checkout
