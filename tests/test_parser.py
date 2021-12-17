@@ -33,9 +33,6 @@ class TestParser(TestCase):
     def setUpClass(cls) -> None:
         cls._requirements_files_dir = join(dirname(__file__), 'reqfiles')
 
-    def test_1(self) -> None:
-        self._test_req_file(req_file='specs_1.txt')
-
     def test_requirement_files(self) -> None:
         for fn in listdir(TestParser._requirements_files_dir):
             fp = join(TestParser._requirements_files_dir, fn)
