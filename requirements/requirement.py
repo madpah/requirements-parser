@@ -5,27 +5,19 @@ from pkg_resources import Requirement as Req
 from .fragment import get_hash_info, parse_fragment, parse_extras_require
 from .vcs import VCS, VCS_SCHEMES
 
-
 URI_REGEX = re.compile(
     r'^(?P<scheme>https?|file|ftps?)://(?P<path>[^#]+)'
     r'(#(?P<fragment>\S+))?'
 )
 
+VCS_SCHEMES_REGEX = r'|'.join([scheme.replace('+', r'\+') for scheme in VCS_SCHEMES])
 VCS_REGEX = re.compile(
-    r'^(?P<scheme>{0})://'.format(r'|'.join(
-        [scheme.replace('+', r'\+') for scheme in VCS_SCHEMES])) +
-    r'((?P<login>[^/@]+)@)?'
-    r'(?P<path>[^#@]+)'
-    r'(@(?P<revision>[^#]+))?'
-    r'(#(?P<fragment>\S+))?'
+    rf'^(?P<scheme>{VCS_SCHEMES_REGEX})://((?P<login>[^/@]+)@)?'
+    r'(?P<path>[^#@]+)(@(?P<revision>[^#]+))?(#(?P<fragment>\S+))?'
 )
 
-# This matches just about everyting
-LOCAL_REGEX = re.compile(
-    r'^((?P<scheme>file)://)?'
-    r'(?P<path>[^#]+)' +
-    r'(#(?P<fragment>\S+))?'
-)
+# This matches just about everything
+LOCAL_REGEX = re.compile(r'^((?P<scheme>file)://)?(?P<path>[^#]+)#(?P<fragment>\S+)?')
 
 
 class Requirement(object):
@@ -59,7 +51,7 @@ class Requirement(object):
       (eg. "mymodule>1.5,<1.6" => [('>', '1.5'), ('<', '1.6')])
     """
 
-    def __init__(self, line):
+    def __init__(self, line: str) -> None:
         # Do not call this private method
         self.line = line
         self.editable = False
@@ -73,13 +65,13 @@ class Requirement(object):
         self.revision = None
         self.hash_name = None
         self.hash = None
-        self.extras = []
-        self.specs = []
+        self.extras: list[str] = []
+        self.specs: list[str] = []
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return '<Requirement: "{0}">'.format(self.line)
 
-    def __getitem__(self, key):
+    def __getitem__(self, key: str) -> str:
         return getattr(self, key)
 
     def __eq__(self, other):

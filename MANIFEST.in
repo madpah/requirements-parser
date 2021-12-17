@@ -1,5 +1,0 @@
-include *.rst
-recursive-include docs *.rst
-recursive-include tests *.expected
-recursive-include tests *.py
-recursive-include tests *.txt
