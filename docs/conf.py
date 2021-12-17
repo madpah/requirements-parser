@@ -22,6 +22,8 @@ author = "David Fischer, Paul Horton"
 # The full version, including alpha/beta/rc tags
 release = pkg_resources.get_distribution("requirements-parser").version
 
+master_doc = 'index'
+
 
 # -- General configuration ---------------------------------------------------
 
