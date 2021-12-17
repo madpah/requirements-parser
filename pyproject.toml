@@ -15,7 +15,7 @@ authors = [
 ]
 maintainers = ["Paul Horton <simplyecommerce@gmail.com>"]
 license = "Apache-2.0"
-readme = "README.rst"
+readme = "README.md"
 homepage = "https://github.com/madpah/requirements-parser"
 repository = "https://github.com/madpah/requirements-parser"
 packages = [
