@@ -3,6 +3,14 @@ Changelog
 
 <!--next-version-placeholder-->
 
+## v0.3.0 (2021-12-17)
+### Feature
+* Added some typing ([`169ff6e`](https://github.com/madpah/requirements-parser/commit/169ff6e79657d8091e6e1a4e21c7da794d507832))
+* Removed Python 2 code ([`82f9473`](https://github.com/madpah/requirements-parser/commit/82f94733f912e140fdcc0254020f4208d3e4a892))
+
+### Fix
+* Removed version from __init__ ([`4e83b9d`](https://github.com/madpah/requirements-parser/commit/4e83b9d3bdd5534da7adfdeb292ad2a1fae73ea8))
+
 **Version 0.2.0** (11 Jan 2018)
 
 This release dropped support for Python 3.2.

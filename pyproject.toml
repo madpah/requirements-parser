@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "requirements-parser"
-version = "0.2.0"
+version = "0.3.0"
 description = "This is a small Python module for parsing Pip requirement files."
 authors = [
     "Paul Horton <simplyecommerce@gmail.com>",
