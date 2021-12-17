@@ -1,6 +1,8 @@
 Changelog
 =========
 
+<!--next-version-placeholder-->
+
 **Version 0.2.0** (11 Jan 2018)
 
 This release dropped support for Python 3.2.
