@@ -1,9 +1,28 @@
-*.pyc
-docs/_build/*
-*.db
-*.egg-info
-*.egg
-dist/
+# Exlude python build & distribution directories
 build/
+dist/
+*.egg-info*
+
+# Exlude *.pyc
+*.pyc
+
+# Exclude test-related items
+.tox/*
+
+# Exclude coverage
 .coverage
-venv*
+test-reports
+
+# Exclude Python Virtual Environment
+venv/*
+.venv/*
+
+# Exlude IDE related files
+.idea/*
+.vscode/*
+
+# Build docs
+docs/_build
+
+# mypy caches
+/.mypy_cache

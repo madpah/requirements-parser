@@ -14,14 +14,10 @@ def parse(reqstr):
     :returns: a *generator* of Requirement objects
     """
     filename = getattr(reqstr, 'name', None)
-    try:
-        # Python 2.x compatibility
-        if not isinstance(reqstr, basestring):
-            reqstr = reqstr.read()
-    except NameError:
-        # Python 3.x only
-        if not isinstance(reqstr, str):
-            reqstr = reqstr.read()
+
+    # Python 3.x only
+    if not isinstance(reqstr, str):
+        reqstr = reqstr.read()
 
     for line in reqstr.splitlines():
         line = line.strip()
