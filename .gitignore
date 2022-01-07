@@ -21,8 +21,8 @@ venv/*
 .idea/*
 .vscode/*
 
-# pdoc3 HTML output
-html/
+# Build docs
+docs/_build
 
 # mypy caches
 /.mypy_cache
