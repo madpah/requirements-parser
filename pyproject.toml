@@ -52,7 +52,7 @@ keywords = [
 
 [tool.poetry.dependencies]
 python = "^3.6"
-types-setuptools = "^57.4.4"
+# `types-setuptools` need to stay in sync with version of `setuptools` - but 47 was not typed...
 
 [tool.poetry.dev-dependencies]
 tox = "^3.24.3"
