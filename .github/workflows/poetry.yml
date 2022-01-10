@@ -36,10 +36,6 @@ jobs:
         uses: Gr1N/setup-poetry@v7
         with:
           poetry-version: ${{ env.POETRY_VERSION }}
-      - uses: actions/cache@v2
-        with:
-          path: ~/.cache/pypoetry/virtualenvs
-          key: ${{ runner.os }}-${{ env.PYTHON_VERISON_DEFAULT }}-poetry${{ env.POETRY_VERSION }}-${{ hashFiles('poetry.lock') }}
       - name: Install dependencies
         run: poetry install --no-root
       - name: Run tox
@@ -47,7 +43,6 @@ jobs:
 
   static-code-analysis:
     name: StaticCodingAnalysis (py${{ matrix.python-version}} ${{ matrix.toxenv-factor }})
-    if: ${{ false }}  # disable for now
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -74,10 +69,6 @@ jobs:
         uses: Gr1N/setup-poetry@v7
         with:
           poetry-version: ${{ env.POETRY_VERSION }}
-      - uses: actions/cache@v2
-        with:
-          path: ~/.cache/pypoetry/virtualenvs
-          key: ${{ runner.os }}-${{ matrix.python-version }}-poetry${{ env.POETRY_VERSION }}-${{ hashFiles('poetry.lock') }}
       - name: Install dependencies
         run: poetry install --no-root
       - name: Run tox
@@ -128,10 +119,6 @@ jobs:
         uses: Gr1N/setup-poetry@v7
         with:
           poetry-version: ${{ env.POETRY_VERSION }}
-      - uses: actions/cache@v2
-        with:
-          path: ~/.cache/pypoetry/virtualenvs
-          key: ${{ runner.os }}}-${{ matrix.python-version }}-poetry${{ env.POETRY_VERSION }}-${{ hashFiles('poetry.lock') }}
       - name: Install dependencies
         run: poetry install --no-root
       - name: Ensure build successful
