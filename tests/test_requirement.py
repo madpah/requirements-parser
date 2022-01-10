@@ -16,6 +16,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
+from typing import Tuple
 from unittest import TestCase
 
 from requirements.requirement import Requirement
@@ -24,7 +25,7 @@ from requirements.requirement import Requirement
 class TestRequirement(TestCase):
 
     @staticmethod
-    def get_reqs(requirement_1: str, requirement_2: str) -> tuple[Requirement, Requirement]:
+    def get_reqs(requirement_1: str, requirement_2: str) -> Tuple[Requirement, Requirement]:
         return (Requirement.parse(requirement_1),
                 Requirement.parse(requirement_2))
 
