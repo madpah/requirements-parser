@@ -1,10 +1,11 @@
 import os
 import warnings
+from typing import Iterator, TextIO, Union
 
 from .requirement import Requirement
 
 
-def parse(reqstr):
+def parse(reqstr: Union[str, TextIO]) -> Iterator[Requirement]:
     """
     Parse a requirements file into a list of Requirements
 
