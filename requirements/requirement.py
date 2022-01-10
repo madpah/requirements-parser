@@ -1,8 +1,9 @@
 from __future__ import unicode_literals
+
 import re
+from typing import Any, cast, Dict, List, Match, Optional
 
 from pkg_resources import Requirement as Req
-from typing import Any, cast, Dict, List, Match, Optional, Union
 
 from .fragment import get_hash_info, parse_fragment, parse_extras_require
 from .vcs import VCS, VCS_SCHEMES
