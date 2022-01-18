@@ -3,6 +3,10 @@ Changelog
 
 <!--next-version-placeholder-->
 
+## v0.4.0 (2022-01-18)
+### Feature
+* Library is now typed according to PEP561 ([`0e1bb6a`](https://github.com/madpah/requirements-parser/commit/0e1bb6a746857a59c50530155d24da487a40c4be))
+
 ## v0.3.1 (2021-12-17)
 ### Fix
 * Readthedocs config ([`ac1e7fb`](https://github.com/madpah/requirements-parser/commit/ac1e7fb616a2c15e83b8a5ca630ffd50aad4aedb))
