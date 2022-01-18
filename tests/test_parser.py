@@ -21,6 +21,7 @@ import warnings
 from os import listdir
 from os.path import dirname, isfile, join
 from types import GeneratorType
+from typing import List
 from unittest import TestCase
 
 from requirements import parse
@@ -43,7 +44,7 @@ class TestParser(TestCase):
 
             self._test_req_file(req_file=fn)
 
-    def _test_req_file(self, req_file: str):
+    def _test_req_file(self, req_file: str) -> None:
         fp = join(TestParser._requirements_files_dir, req_file)
         with open(fp) as req_fh:
             with warnings.catch_warnings():
@@ -60,7 +61,7 @@ class TestParser(TestCase):
                                          msg=f'Failed on {fp}')
 
 
-def listify(iterable: GeneratorType) -> list:
+def listify(iterable: GeneratorType) -> List:
     out = []
 
     for item in iterable:

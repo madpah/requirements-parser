@@ -1,5 +1,8 @@
 from __future__ import unicode_literals
+
 import re
+from typing import Any, cast, Dict, List, Match, Optional
+
 from pkg_resources import Requirement as Req
 
 from .fragment import get_hash_info, parse_fragment, parse_extras_require
@@ -20,7 +23,7 @@ VCS_REGEX = re.compile(
 LOCAL_REGEX = re.compile(r'^((?P<scheme>file)://)?(?P<path>[^#]+)#(?P<fragment>\S+)?')
 
 
-class Requirement(object):
+class Requirement:
     """
     Represents a single requirement
 
@@ -65,35 +68,37 @@ class Requirement(object):
         self.revision = None
         self.hash_name = None
         self.hash = None
-        self.extras: list[str] = []
-        self.specs: list[str] = []
+        self.extras: List[str] = []
+        self.specs: List[str] = []
 
     def __repr__(self) -> str:
         return '<Requirement: "{0}">'.format(self.line)
 
-    def __getitem__(self, key: str) -> str:
+    def __getitem__(self, key: str) -> Any:
         return getattr(self, key)
 
-    def __eq__(self, other):
-        return all([
-            self.name == other.name,
-            set(self.specs) == set(other.specs),
-            self.editable == other.editable,
-            self.specifier == other.specifier,
-            self.revision == other.revision,
-            self.hash_name == other.hash_name,
-            self.hash == other.hash,
-            set(self.extras) == set(other.extras),
-        ])
+    def __eq__(self, other: object) -> bool:
+        if isinstance(other, Requirement):
+            return all([
+                self.name == other.name,
+                set(self.specs) == set(other.specs),
+                self.editable == other.editable,
+                self.specifier == other.specifier,
+                self.revision == other.revision,
+                self.hash_name == other.hash_name,
+                self.hash == other.hash,
+                set(self.extras) == set(other.extras),
+            ])
+        return False
 
-    def __ne__(self, other):
+    def __ne__(self, other: object) -> bool:
         return not self == other
 
-    def keys(self):
+    def keys(self) -> Any:
         return self.__dict__.keys()
 
     @classmethod
-    def parse_editable(cls, line):
+    def parse_editable(cls, line: str) -> 'Requirement':
         """
         Parses a Requirement from an "editable" requirement which is either
         a local project path or a VCS project URI.
@@ -111,41 +116,41 @@ class Requirement(object):
         if ' #' in line:
             line = line[:line.find(' #')]
 
-        vcs_match = VCS_REGEX.match(line)
-        local_match = LOCAL_REGEX.match(line)
+        vcs_match: Optional[Match[str]] = VCS_REGEX.match(line)
+        local_match: Optional[Match[str]] = LOCAL_REGEX.match(line)
 
         if vcs_match is not None:
-            groups = vcs_match.groupdict()
+            groups: Dict[str, str] = vcs_match.groupdict()
             if groups.get('login'):
-                req.uri = '{scheme}://{login}@{path}'.format(**groups)
+                req.uri = '{scheme}://{login}@{path}'.format(**groups)  # type: ignore
             else:
-                req.uri = '{scheme}://{path}'.format(**groups)
-            req.revision = groups['revision']
+                req.uri = '{scheme}://{path}'.format(**groups)  # type: ignore
+            req.revision = groups['revision']  # type: ignore
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
-                egg = fragment.get('egg')
-                req.name, req.extras = parse_extras_require(egg)
-                req.hash_name, req.hash = get_hash_info(fragment)
-                req.subdirectory = fragment.get('subdirectory')
+                egg = cast(str, fragment.get('egg'))
+                req.name, req.extras = parse_extras_require(egg)  # type: ignore
+                req.hash_name, req.hash = get_hash_info(fragment)     # type: ignore
+                req.subdirectory = fragment.get('subdirectory')  # type: ignore
             for vcs in VCS:
-                if req.uri.startswith(vcs):
-                    req.vcs = vcs
+                if str(req.uri).startswith(vcs):
+                    req.vcs = vcs  # type: ignore
         else:
             assert local_match is not None, 'This should match everything'
             groups = local_match.groupdict()
             req.local_file = True
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
-                egg = fragment.get('egg')
-                req.name, req.extras = parse_extras_require(egg)
-                req.hash_name, req.hash = get_hash_info(fragment)
-                req.subdirectory = fragment.get('subdirectory')
-            req.path = groups['path']
+                egg = cast(str, fragment.get('egg'))
+                req.name, req.extras = parse_extras_require(egg)  # type: ignore
+                req.hash_name, req.hash = get_hash_info(fragment)  # type: ignore
+                req.subdirectory = fragment.get('subdirectory')  # type: ignore
+            req.path = cast(str, groups['path'])  # type: ignore
 
         return req
 
     @classmethod
-    def parse_line(cls, line):
+    def parse_line(cls, line: str) -> 'Requirement':
         """
         Parses a Requirement from a non-editable requirement.
 
@@ -158,35 +163,35 @@ class Requirement(object):
 
         req = cls(line)
 
-        vcs_match = VCS_REGEX.match(line)
-        uri_match = URI_REGEX.match(line)
-        local_match = LOCAL_REGEX.match(line)
+        vcs_match: Optional[Match[str]] = VCS_REGEX.match(line)
+        uri_match: Optional[Match[str]] = URI_REGEX.match(line)
+        local_match: Optional[Match[str]] = LOCAL_REGEX.match(line)
 
         if vcs_match is not None:
             groups = vcs_match.groupdict()
             if groups.get('login'):
-                req.uri = '{scheme}://{login}@{path}'.format(**groups)
+                req.uri = '{scheme}://{login}@{path}'.format(**groups)  # type: ignore
             else:
-                req.uri = '{scheme}://{path}'.format(**groups)
-            req.revision = groups['revision']
+                req.uri = '{scheme}://{path}'.format(**groups)  # type: ignore
+            req.revision = groups['revision']  # type: ignore
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
                 egg = fragment.get('egg')
-                req.name, req.extras = parse_extras_require(egg)
-                req.hash_name, req.hash = get_hash_info(fragment)
-                req.subdirectory = fragment.get('subdirectory')
+                req.name, req.extras = parse_extras_require(egg)  # type: ignore
+                req.hash_name, req.hash = get_hash_info(fragment)  # type: ignore
+                req.subdirectory = fragment.get('subdirectory')  # type: ignore
             for vcs in VCS:
-                if req.uri.startswith(vcs):
-                    req.vcs = vcs
+                if str(req.uri).startswith(vcs):
+                    req.vcs = vcs  # type: ignore
         elif uri_match is not None:
             groups = uri_match.groupdict()
-            req.uri = '{scheme}://{path}'.format(**groups)
+            req.uri = '{scheme}://{path}'.format(**groups)  # type: ignore
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
                 egg = fragment.get('egg')
-                req.name, req.extras = parse_extras_require(egg)
-                req.hash_name, req.hash = get_hash_info(fragment)
-                req.subdirectory = fragment.get('subdirectory')
+                req.name, req.extras = parse_extras_require(egg)  # type: ignore
+                req.hash_name, req.hash = get_hash_info(fragment)  # type: ignore
+                req.subdirectory = fragment.get('subdirectory')  # type: ignore
             if groups['scheme'] == 'file':
                 req.local_file = True
         elif '#egg=' in line:
@@ -198,22 +203,22 @@ class Requirement(object):
                 fragment = parse_fragment(groups['fragment'])
                 egg = fragment.get('egg')
                 name, extras = parse_extras_require(egg)
-                req.name = fragment.get('egg')
-                req.hash_name, req.hash = get_hash_info(fragment)
-                req.subdirectory = fragment.get('subdirectory')
-            req.path = groups['path']
+                req.name = fragment.get('egg')  # type: ignore
+                req.hash_name, req.hash = get_hash_info(fragment)  # type: ignore
+                req.subdirectory = fragment.get('subdirectory')  # type: ignore
+            req.path = groups['path']  # type: ignore
         else:
             # This is a requirement specifier.
             # Delegate to pkg_resources and hope for the best
             req.specifier = True
             pkg_req = Req.parse(line)
-            req.name = pkg_req.unsafe_name
+            req.name = pkg_req.unsafe_name  # type: ignore
             req.extras = list(pkg_req.extras)
-            req.specs = pkg_req.specs
+            req.specs = pkg_req.specs  # type: ignore
         return req
 
     @classmethod
-    def parse(cls, line):
+    def parse(cls, line: str) -> 'Requirement':
         """
         Parses a Requirement from a line of a requirement file.
 
