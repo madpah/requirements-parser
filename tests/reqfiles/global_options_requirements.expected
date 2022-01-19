@@ -1,0 +1,23 @@
+[
+ {
+  "specifier": true,
+  "local_file": false,
+  "name": "six",
+  "editable": false,
+  "subdirectory": null,
+  "uri": null,
+  "extras": [],
+  "vcs": null,
+  "path": null,
+  "line":  "six==1.16.0",
+  "hash_name": null,
+  "hash": null,
+  "specs": [
+    [
+    "==",
+    "1.16.0"
+   ]
+  ],
+  "revision": null
+ }
+]

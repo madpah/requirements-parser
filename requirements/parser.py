@@ -22,6 +22,22 @@ from typing import Iterator, TextIO, Union
 
 from .requirement import Requirement
 
+_UNSUPPORTED_OPTIONS = {
+    '-c': 'Unused option -c (constraint). Skipping.',
+    '--constraint': 'Unused option -c (constraint). Skipping.',
+    '-r': 'Unused option -r (requirement). Skipping.',
+    '--requirement': 'Unused option -r (requirement). Skipping.',
+    '--no-binary': 'Unused option --no-binary. Skipping',
+    '--only-binary': 'Unused option --only-binary. Skipping',
+    '--prefer-binary': 'Unused option --prefer-binary. Skipping',
+    '--require-hashes': 'Unused option --require-hashes. Skipping',
+    '--pre': 'Unused option --pre. Skipping',
+    '--trusted-host': 'Unused option --trusted-host. Skipping',
+    '--use-feature': 'Unused option --use-feature. Skipping',
+    '-Z': 'Unused option -Z (always-unzip). Skipping.',
+    '--always-unzip': 'Unused option --always-unzip. Skipping.'
+}
+
 
 def parse(reqstr: Union[str, TextIO]) -> Iterator[Requirement]:
     """
@@ -40,6 +56,7 @@ def parse(reqstr: Union[str, TextIO]) -> Iterator[Requirement]:
 
     for line in reqstr.splitlines():
         line = line.strip()
+
         if line == '':
             continue
         elif not line or line.startswith('#'):
@@ -58,8 +75,13 @@ def parse(reqstr: Union[str, TextIO]) -> Iterator[Requirement]:
                 line.startswith('--no-index'):
             warnings.warn('Private repos not supported. Skipping.')
             continue
-        elif line.startswith('-Z') or line.startswith('--always-unzip'):
-            warnings.warn('Unused option --always-unzip. Skipping.')
-            continue
         else:
-            yield Requirement.parse(line)
+            unsupported: bool = False
+            for param in _UNSUPPORTED_OPTIONS.keys():
+                if line.startswith(param):
+                    warnings.warn(_UNSUPPORTED_OPTIONS.get(param))
+                    unsupported = True
+
+            # Otherwise, parse it
+            if not unsupported:
+                yield Requirement.parse(line)
