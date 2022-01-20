@@ -79,7 +79,7 @@ def parse(reqstr: Union[str, TextIO]) -> Iterator[Requirement]:
             unsupported: bool = False
             for param in _UNSUPPORTED_OPTIONS.keys():
                 if line.startswith(param):
-                    warnings.warn(_UNSUPPORTED_OPTIONS.get(param))
+                    warnings.warn(str(_UNSUPPORTED_OPTIONS.get(param)))
                     unsupported = True
 
             # Otherwise, parse it
