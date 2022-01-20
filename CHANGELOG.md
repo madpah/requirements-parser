@@ -3,6 +3,10 @@ Changelog
 
 <!--next-version-placeholder-->
 
+## v0.5.0 (2022-01-20)
+### Feature
+* Support all documented options in requirements files #62 ([#63](https://github.com/madpah/requirements-parser/issues/63)) ([`f92c0c0`](https://github.com/madpah/requirements-parser/commit/f92c0c079bce03b1860c78852d2c8c48cf32d539))
+
 ## v0.4.0 (2022-01-18)
 ### Feature
 * Library is now typed according to PEP561 ([`0e1bb6a`](https://github.com/madpah/requirements-parser/commit/0e1bb6a746857a59c50530155d24da487a40c4be))
