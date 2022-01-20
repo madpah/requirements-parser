@@ -1,0 +1,10 @@
+-i https://pypi.org/simple
+-c
+-f /my/local/archives
+--find-links /my/local/archives
+--no-binary :none:
+--only-binary :all:
+--prefer-binary
+--require-hashes
+
+six==1.16.0
