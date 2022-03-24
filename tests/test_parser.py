@@ -44,6 +44,12 @@ class TestParser(TestCase):
 
             self._test_req_file(req_file=fn)
 
+    def test_skip_includes(self) -> None:
+        fp = join(TestParser._requirements_files_dir, 'recursive_1.txt')
+        with open(fp) as req_fh:
+            parsed = parse(req_fh, skip_includes=True)
+            self.assertEqual([p.line for p in parsed], ['Django==1.6'])
+
     def _test_req_file(self, req_file: str) -> None:
         fp = join(TestParser._requirements_files_dir, req_file)
         with open(fp) as req_fh:
