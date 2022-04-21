@@ -293,9 +293,9 @@ class Requirement:
 
     def __hash__(self) -> int:
         return hash(
-            (self.editable, self.local_file, self.specifier, self.vcs, self.revision, self.name, self.uri,
+            [self.editable, self.local_file, self.specifier, self.vcs, self.revision, self.name, self.uri,
              self.subdirectory, self.path, self.hash_name, self.hash_, *sorted(list(self.extras)),
-             *sorted(list(self.specs)))
+             *sorted(list(self.specs))]
         )
 
     def __ne__(self, other: object) -> bool:
@@ -441,7 +441,6 @@ class Requirement:
         if line.startswith('-e') or line.startswith('--editable'):
             # Editable installs are either a local project path
             # or a VCS project URI
-            return cls.parse_editable(
-                re.sub(r'^(-e|--editable=?)\s*', '', line))
+            return cls.parse_editable(re.sub(r'^(-e|--editable=?)\s*', '', line))
 
         return cls.parse_line(line)
