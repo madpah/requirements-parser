@@ -55,3 +55,11 @@ class TestRequirement(TestCase):
             "-e git://git.example.com/MyProject.git@123#egg=MyProject",
             "-e git://git.example.com/MyProject.git@abc#egg=MyProject"
         ))
+
+    def test_with_hash(self) -> None:
+        a, b = TestRequirement.get_reqs(
+            "http://pypi.python.org/packages/source/p/pytz/pytz-2016.4.tar.gz#md5=a3316cf3842ed0375ba5931914239d97",
+            "http://pypi.python.org/packages/source/p/pytz/pytz-2016.4.tar.gz#md5=a3316cf3842ed0375ba5931914239d97"
+        )
+        self.assertEqual('a3316cf3842ed0375ba5931914239d97', a.hash_)
+        self.assertEqual(a, b)
