@@ -16,15 +16,17 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 
+import builtins
 import json
 import warnings
 from os import listdir
 from os.path import dirname, isfile, join
 from types import GeneratorType
-from typing import List
+from typing import Any
 from unittest import TestCase
 
 from requirements import parse
+from requirements.requirement import Requirement
 
 
 class TestParser(TestCase):
@@ -50,29 +52,40 @@ class TestParser(TestCase):
             with warnings.catch_warnings():
                 warnings.simplefilter("ignore")
                 parsed = parse(req_fh)
-
                 if 'fail' in req_file:
                     with self.assertRaises(ValueError):
-                        list([dict(r) for r in parsed])
+                        list(map(lambda r: _requirement_dict(r=r), parsed))
                 else:
                     with open(fp[:-4] + '.expected', 'r') as f2:
                         self.assertIsInstance(parsed, GeneratorType)
-                        self.assertEqual(json.loads(f2.read()), listify(dict(r) for r in parsed),
+                        self.assertEqual(json.loads(f2.read()), list(map(lambda r: _requirement_dict(r=r), parsed)),
                                          msg=f'Failed on {fp}')
 
 
-def listify(iterable: GeneratorType) -> List:
-    out = []
+def _requirement_dict(r: Requirement) -> dict[str, Any]:
+    d: dict[str, Any] = {}
+    for k in r.__dict__:
+        a = getattr(r, k)
 
-    for item in iterable:
-        if isinstance(item, dict):
-            for key, value in item.items():
-                if isinstance(item[key], (tuple, list)):
-                    if key in ('extras', 'specs'):
-                        # enforce predictability
-                        item[key] = sorted(listify(value))
-                        # item[key] = listify(value)
-        elif isinstance(item, (tuple, list)):
-            item = listify(item)
-        out.append(item)
-    return out
+        # Ignore any properties that don't being with _
+        if not k.startswith('_'):
+            continue
+
+        # Strip off leading _
+        new_k = k[1:]
+
+        # If key would match a built-in name, remove the trailing _
+        if new_k[:-1] in dir(builtins):
+            new_k = new_k[:-1]
+
+        if isinstance(a, (list, set)):
+            # Enforce predictability
+            a = sorted(a)
+            d.update({
+                new_k: list(map(lambda i: list(i) if isinstance(i, tuple) else i, a))  # type: ignore
+            })
+        else:
+            d.update({
+                new_k: a
+            })
+    return d
