@@ -1,0 +1,18 @@
+[
+ {
+  "specifier": false,
+  "local_file": true,
+  "name": null,
+  "editable": true,
+  "uri": null,
+  "extras": ["socks"],
+  "vcs": null,
+  "path": null,
+  "line": "-e .[socks]",
+  "specs": [],
+  "revision": null,
+  "hash": null,
+  "hash_name": null,
+  "subdirectory": null
+ }
+]
