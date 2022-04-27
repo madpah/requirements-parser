@@ -245,7 +245,7 @@ class Requirement:
         :raises: ValueError on an invalid requirement
         """
 
-        if line.startswith('-e') or line.startswith('--editable'):
+        if line.startswith(('-e', '--editable')):
             # Editable installs are either a local project path
             # or a VCS project URI
             return cls.parse_editable(
