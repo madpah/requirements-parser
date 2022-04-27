@@ -49,6 +49,7 @@ def parse(reqstr: Union[str, TextIO]) -> Iterator[Requirement]:
     :returns: a *generator* of Requirement objects
     """
     filename = getattr(reqstr, 'name', None)
+    private_repos = ('-f', '--find-links', '-i', '--index-url', '--extra-index-url', '--no-index')
 
     # Python 3.x only
     if not isinstance(reqstr, str):
@@ -62,17 +63,14 @@ def parse(reqstr: Union[str, TextIO]) -> Iterator[Requirement]:
         elif not line or line.startswith('#'):
             # comments are lines that start with # only
             continue
-        elif line.startswith('-r') or line.startswith('--requirement'):
+        elif line.startswith(('-r', '--requirement')):
             _, new_filename = line.split()
             new_file_path = os.path.join(os.path.dirname(filename or '.'),
                                          new_filename)
             with open(new_file_path) as f:
                 for requirement in parse(f):
                     yield requirement
-        elif line.startswith('-f') or line.startswith('--find-links') or \
-                line.startswith('-i') or line.startswith('--index-url') or \
-                line.startswith('--extra-index-url') or \
-                line.startswith('--no-index'):
+        elif line.startswith(private_repos):
             warnings.warn('Private repos not supported. Skipping.')
             continue
         else:
