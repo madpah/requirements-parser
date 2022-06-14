@@ -39,7 +39,7 @@ _UNSUPPORTED_OPTIONS = {
 }
 
 
-def parse(reqstr: Union[str, TextIO]) -> Iterator[Requirement]:
+def parse(reqstr: Union[str, TextIO], skip_includes: bool=False) -> Iterator[Requirement]:
     """
     Parse a requirements file into a list of Requirements
 
@@ -63,6 +63,8 @@ def parse(reqstr: Union[str, TextIO]) -> Iterator[Requirement]:
             # comments are lines that start with # only
             continue
         elif line.startswith('-r') or line.startswith('--requirement'):
+            if skip_includes:
+                continue
             _, new_filename = line.split()
             new_file_path = os.path.join(os.path.dirname(filename or '.'),
                                          new_filename)
