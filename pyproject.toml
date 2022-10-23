@@ -52,6 +52,7 @@ keywords = [
 
 [tool.poetry.dependencies]
 python = "^3.6"
+setuptools = "*"
 # `types-setuptools` need to stay in sync with version of `setuptools` - but 47 was not typed...
 types-setuptools = ">= 57.0.0"
 
