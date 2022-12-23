@@ -22,9 +22,9 @@ packages = [
     { include = "requirements" }
 ]
 include = [
-    "AUTHORS.rst",
-    "LICENSE",
-    "README.md"
+    { path = "AUTHORS.rst", format="sdist" },
+    { path = "LICENSE", format="sdist" },
+    { path = "README.md", format="sdist"},
 ]
 classifiers = [
     # Trove classifiers - https://packaging.python.org/specifications/core-metadata/#metadata-classifier
