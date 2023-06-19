@@ -153,8 +153,7 @@ class Requirement:
             for vcs in VCS:
                 if str(req.uri).startswith(vcs):
                     req.vcs = vcs  # type: ignore
-        else:
-            assert local_match is not None, 'This should match everything'
+        elif local_match is not None:
             groups = local_match.groupdict()
             req.local_file = True
             if groups['fragment']:
@@ -164,7 +163,9 @@ class Requirement:
                 req.hash_name, req.hash = get_hash_info(fragment)  # type: ignore
                 req.subdirectory = fragment.get('subdirectory')  # type: ignore
             req.path = cast(str, groups['path'])  # type: ignore
-
+        else:
+            req.local_file = True
+            req.path, req.name = line.rsplit("/", 1)
         return req
 
     @classmethod
