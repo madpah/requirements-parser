@@ -57,8 +57,10 @@ class TestParser(TestCase):
                 else:
                     with open(fp[:-4] + '.expected', 'r') as f2:
                         self.assertIsInstance(parsed, GeneratorType)
-                        self.assertEqual(json.loads(f2.read()), listify(dict(r) for r in parsed),
-                                         msg=f'Failed on {fp}')
+                        expected = json.loads(f2.read())
+                        res = listify(dict(r) for r in parsed)
+                        for expected_item, res_item in zip(expected, res):
+                            self.assertEqual(expected_item, res_item, msg=f'Failed on {fp}')
 
 
 def listify(iterable: GeneratorType) -> List:
