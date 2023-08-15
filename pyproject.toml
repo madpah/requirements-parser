@@ -19,7 +19,8 @@ readme = "README.md"
 homepage = "https://github.com/madpah/requirements-parser"
 repository = "https://github.com/madpah/requirements-parser"
 packages = [
-    { include = "requirements" }
+    { include = "requirements" },
+    { include = "tests", format = "sdist" },
 ]
 include = [
     { path = "AUTHORS.rst", format = "sdist" },
