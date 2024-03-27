@@ -42,6 +42,10 @@ env:
   PYTHON_VERSION_DEFAULT: "3.9"
   POETRY_VERSION: "1.4.2"
 
+permissions:
+    id-token: write
+    contents: write
+
 jobs:
   build-and-release:
     # https://github.community/t/how-do-i-specify-job-dependency-running-in-another-workflow/16482
@@ -83,8 +87,6 @@ jobs:
         if: steps.release.outputs.released == 'true'
         # see https://github.com/pypa/gh-action-pypi-publish
         uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          password: ${{ secrets.PYPI_TOKEN }}
 
       - name: Publish package distributions to GitHub Releases
         if: steps.release.outputs.released == 'true'
