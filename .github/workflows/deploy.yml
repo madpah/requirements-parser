@@ -65,8 +65,6 @@ jobs:
         uses: Gr1N/setup-poetry@v9
         with:
           poetry-version: ${{ env.POETRY_VERSION }}
-      - name: View poetry version
-        run: poetry --version
       - name: Install dependencies
         run: |
 #          poetry config virtualenvs.create false
