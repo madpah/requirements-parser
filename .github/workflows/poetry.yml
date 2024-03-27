@@ -70,7 +70,9 @@ jobs:
         with:
           poetry-version: ${{ env.POETRY_VERSION }}
       - name: Install dependencies
-        run: poetry install --no-root
+        run: |
+          pip install --upgrade pip
+          poetry install --no-root
       - name: Run tox
         run: poetry run tox -e mypy-${{ matrix.toxenv-factor }}
 
