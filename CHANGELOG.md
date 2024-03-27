@@ -1,5 +1,38 @@
 # CHANGELOG
 
+
+
+## v0.6.0 (2024-03-27)
+
+### Chore
+
+* chore: update publishing to PyPi to use Trusted Publishing
+
+Signed-off-by: Paul Horton &lt;paul.horton@owasp.org&gt; ([`1a09ab9`](https://github.com/madpah/requirements-parser/commit/1a09ab950d94d049c3279cf56372453eb87c9dc1))
+
+* chore: Revert CHANGELOG.md ([`d71ab54`](https://github.com/madpah/requirements-parser/commit/d71ab54657b25f6985d307c84f61dff017b137c0))
+
+### Feature
+
+* feat: upgrade CI workflows to get them running again (#90)
+
+* ci: update actions to latest for all workflows
+
+Signed-off-by: Paul Horton &lt;paul.horton@owasp.org&gt; ([`e76a3f5`](https://github.com/madpah/requirements-parser/commit/e76a3f553d145bcd9fdcb2c8aa7424b607056ee0))
+
+### Unknown
+
+* Merge branch &#39;master&#39; of github.com:madpah/requirements-parser ([`58d5e50`](https://github.com/madpah/requirements-parser/commit/58d5e50fe15221ede167960a6ec019104e5436ff))
+
+* doc: install requirements.txt before building docs
+
+Signed-off-by: Paul Horton &lt;paul.horton@owasp.org&gt; ([`1ce9236`](https://github.com/madpah/requirements-parser/commit/1ce923617147dd984c280d56cb1f02fcd3589a7c))
+
+* doc: minor doc improvements
+
+Signed-off-by: Paul Horton &lt;paul.horton@owasp.org&gt; ([`ee91237`](https://github.com/madpah/requirements-parser/commit/ee9123745ca3cd78826b2eddd3abe2644920d15c))
+
+
 ## v0.5.0 (2022-01-20)
 
 ### Chore
