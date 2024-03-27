@@ -1,28 +1,5 @@
 # CHANGELOG
 
-
-
-## v0.6.0 (2024-03-27)
-
-### Feature
-
-* feat: upgrade CI workflows to get them running again (#90)
-
-* ci: update actions to latest for all workflows
-
-Signed-off-by: Paul Horton &lt;paul.horton@owasp.org&gt; ([`e76a3f5`](https://github.com/madpah/requirements-parser/commit/e76a3f553d145bcd9fdcb2c8aa7424b607056ee0))
-
-### Unknown
-
-* doc: install requirements.txt before building docs
-
-Signed-off-by: Paul Horton &lt;paul.horton@owasp.org&gt; ([`1ce9236`](https://github.com/madpah/requirements-parser/commit/1ce923617147dd984c280d56cb1f02fcd3589a7c))
-
-* doc: minor doc improvements
-
-Signed-off-by: Paul Horton &lt;paul.horton@owasp.org&gt; ([`ee91237`](https://github.com/madpah/requirements-parser/commit/ee9123745ca3cd78826b2eddd3abe2644920d15c))
-
-
 ## v0.5.0 (2022-01-20)
 
 ### Chore
