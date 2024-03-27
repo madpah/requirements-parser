@@ -66,9 +66,7 @@ jobs:
         with:
           poetry-version: ${{ env.POETRY_VERSION }}
       - name: Install dependencies
-        run: |
-#          poetry config virtualenvs.create false
-          poetry install --no-root
+        run: poetry install --no-root
 
       - name: Python Semantic Release
         id: release
