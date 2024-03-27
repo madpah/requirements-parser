@@ -3,7 +3,7 @@ name = "requirements-parser"
 version = "0.5.0"
 description = "This is a small Python module for parsing Pip requirement files."
 authors = [
-    "Paul Horton <simplyecommerce@gmail.com>",
+    "Paul Horton <paul@hogr.dev>",
     "David Fischer (@davidfischer)",
     "Trey Hunner (@treyhunner)",
     "Dima Veselov (@dveselov)",
