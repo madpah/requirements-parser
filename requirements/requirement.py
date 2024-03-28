@@ -19,7 +19,7 @@
 from __future__ import unicode_literals
 
 import re
-from typing import Any, cast, Dict, List, Match, Optional
+from typing import Any, cast, Dict, List, Match, Optional, Tuple
 
 from pkg_resources import Requirement as Req
 
@@ -78,16 +78,16 @@ class Requirement:
         self.editable = False
         self.local_file = False
         self.specifier = False
-        self.vcs = None
-        self.name = None
-        self.subdirectory = None
-        self.uri = None
-        self.path = None
-        self.revision = None
-        self.hash_name = None
-        self.hash = None
+        self.vcs: Optional[str] = None
+        self.name: Optional[str] = None
+        self.subdirectory: Optional[str] = None
+        self.uri: Optional[str] = None
+        self.path: Optional[str] = None
+        self.revision: Optional[str] = None
+        self.hash_name: Optional[str] = None
+        self.hash: Optional[str] = None
         self.extras: List[str] = []
-        self.specs: List[str] = []
+        self.specs: List[Tuple[str, str]] = []
 
     def __repr__(self) -> str:
         return '<Requirement: "{0}">'.format(self.line)
@@ -140,19 +140,19 @@ class Requirement:
         if vcs_match is not None:
             groups: Dict[str, str] = vcs_match.groupdict()
             if groups.get('login'):
-                req.uri = '{scheme}://{login}@{path}'.format(**groups)  # type: ignore
+                req.uri = '{scheme}://{login}@{path}'.format(**groups)
             else:
-                req.uri = '{scheme}://{path}'.format(**groups)  # type: ignore
-            req.revision = groups['revision']  # type: ignore
+                req.uri = '{scheme}://{path}'.format(**groups)
+            req.revision = groups['revision']
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
                 egg = cast(str, fragment.get('egg'))
-                req.name, req.extras = parse_extras_require(egg)  # type: ignore
-                req.hash_name, req.hash = get_hash_info(fragment)     # type: ignore
-                req.subdirectory = fragment.get('subdirectory')  # type: ignore
+                req.name, req.extras = parse_extras_require(egg)
+                req.hash_name, req.hash = get_hash_info(fragment)
+                req.subdirectory = fragment.get('subdirectory')
             for vcs in VCS:
                 if str(req.uri).startswith(vcs):
-                    req.vcs = vcs  # type: ignore
+                    req.vcs = vcs
         else:
             assert local_match is not None, 'This should match everything'
             groups = local_match.groupdict()
@@ -160,10 +160,10 @@ class Requirement:
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
                 egg = cast(str, fragment.get('egg'))
-                req.name, req.extras = parse_extras_require(egg)  # type: ignore
-                req.hash_name, req.hash = get_hash_info(fragment)  # type: ignore
-                req.subdirectory = fragment.get('subdirectory')  # type: ignore
-            req.path = cast(str, groups['path'])  # type: ignore
+                req.name, req.extras = parse_extras_require(egg)
+                req.hash_name, req.hash = get_hash_info(fragment)
+                req.subdirectory = fragment.get('subdirectory')
+            req.path = groups['path']
 
         return req
 
@@ -188,28 +188,28 @@ class Requirement:
         if vcs_match is not None:
             groups = vcs_match.groupdict()
             if groups.get('login'):
-                req.uri = '{scheme}://{login}@{path}'.format(**groups)  # type: ignore
+                req.uri = '{scheme}://{login}@{path}'.format(**groups)
             else:
-                req.uri = '{scheme}://{path}'.format(**groups)  # type: ignore
-            req.revision = groups['revision']  # type: ignore
+                req.uri = '{scheme}://{path}'.format(**groups)
+            req.revision = groups['revision']
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
                 egg = fragment.get('egg')
-                req.name, req.extras = parse_extras_require(egg)  # type: ignore
-                req.hash_name, req.hash = get_hash_info(fragment)  # type: ignore
-                req.subdirectory = fragment.get('subdirectory')  # type: ignore
+                req.name, req.extras = parse_extras_require(egg)
+                req.hash_name, req.hash = get_hash_info(fragment)
+                req.subdirectory = fragment.get('subdirectory')
             for vcs in VCS:
                 if str(req.uri).startswith(vcs):
-                    req.vcs = vcs  # type: ignore
+                    req.vcs = vcs
         elif uri_match is not None:
             groups = uri_match.groupdict()
-            req.uri = '{scheme}://{path}'.format(**groups)  # type: ignore
+            req.uri = '{scheme}://{path}'.format(**groups)
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
                 egg = fragment.get('egg')
-                req.name, req.extras = parse_extras_require(egg)  # type: ignore
-                req.hash_name, req.hash = get_hash_info(fragment)  # type: ignore
-                req.subdirectory = fragment.get('subdirectory')  # type: ignore
+                req.name, req.extras = parse_extras_require(egg)
+                req.hash_name, req.hash = get_hash_info(fragment)
+                req.subdirectory = fragment.get('subdirectory')
             if groups['scheme'] == 'file':
                 req.local_file = True
         elif '#egg=' in line:
@@ -221,18 +221,18 @@ class Requirement:
                 fragment = parse_fragment(groups['fragment'])
                 egg = fragment.get('egg')
                 name, extras = parse_extras_require(egg)
-                req.name = fragment.get('egg')  # type: ignore
-                req.hash_name, req.hash = get_hash_info(fragment)  # type: ignore
-                req.subdirectory = fragment.get('subdirectory')  # type: ignore
-            req.path = groups['path']  # type: ignore
+                req.name = fragment.get('egg')
+                req.hash_name, req.hash = get_hash_info(fragment)
+                req.subdirectory = fragment.get('subdirectory')
+            req.path = groups['path']
         else:
             # This is a requirement specifier.
             # Delegate to pkg_resources and hope for the best
             req.specifier = True
             pkg_req = Req.parse(line)
-            req.name = pkg_req.unsafe_name  # type: ignore
+            req.name = pkg_req.unsafe_name
             req.extras = list(pkg_req.extras)
-            req.specs = pkg_req.specs  # type: ignore
+            req.specs = pkg_req.specs
         return req
 
     @classmethod
