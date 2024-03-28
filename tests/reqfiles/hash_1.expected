@@ -1,0 +1,44 @@
+[
+ {
+  "specifier": true,
+  "local_file": false,
+  "name": "packaging",
+  "editable": false,
+  "subdirectory": null,
+  "uri": null,
+  "extras": [],
+  "vcs": null,
+  "path": null,
+  "line":  "packaging==21.3",
+  "hash_name": null,
+  "hash": null,
+  "specs": [
+   [
+    "==",
+    "21.3"
+   ]
+  ],
+  "revision": null
+ },
+ {
+  "specifier": true,
+  "local_file": false,
+  "name": "packaging",
+  "editable": false,
+  "subdirectory": null,
+  "uri": null,
+  "extras": [],
+  "vcs": null,
+  "path": null,
+  "line":  "packaging==21.3",
+  "hash_name": null,
+  "hash": null,
+  "specs": [
+   [
+    "==",
+    "21.3"
+   ]
+  ],
+  "revision": null
+ }
+]

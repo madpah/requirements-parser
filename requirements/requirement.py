@@ -251,4 +251,9 @@ class Requirement:
             return cls.parse_editable(
                 re.sub(r'^(-e|--editable=?)\s*', '', line))
 
+        if ' --hash=' in line:
+            line = line[:line.find(' --hash=')]
+        if ' \\' in line:
+            line = line[:line.find(' \\')]
+
         return cls.parse_line(line)
