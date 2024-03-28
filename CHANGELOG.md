@@ -2,6 +2,25 @@
 
 
 
+## v0.7.0 (2024-03-28)
+
+### Chore
+
+* chore: update release workflow to run from main
+
+Signed-off-by: Paul Horton &lt;paul.horton@owasp.org&gt; ([`c363b80`](https://github.com/madpah/requirements-parser/commit/c363b805cf88c4cd52947a0cfc428e92468c7961))
+
+* chore: update release workflow to run from main
+
+Signed-off-by: Paul Horton &lt;paul.horton@owasp.org&gt; ([`10f0c07`](https://github.com/madpah/requirements-parser/commit/10f0c07ddc372e638e46d9481a40ec402414f66d))
+
+### Feature
+
+* feat: Drop support for Python 3.6, add support for Python 3.11 (#92)
+
+Signed-off-by: Paul Horton &lt;paul.horton@owasp.org&gt; ([`1a455be`](https://github.com/madpah/requirements-parser/commit/1a455be331eff38dc19108da7f13c3129dcba43d))
+
+
 ## v0.6.0 (2024-03-27)
 
 ### Chore
