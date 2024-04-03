@@ -19,7 +19,7 @@
 from __future__ import unicode_literals
 
 import re
-from typing import Any, Dict, List, Match, Optional, cast
+from typing import Any, Dict, List, Match, Optional, Tuple, cast
 
 from pkg_resources import Requirement as Req
 
@@ -87,7 +87,7 @@ class Requirement:
         self.hash_name = None
         self.hash = None
         self.extras: List[str] = []
-        self.specs: List[str] = []
+        self.specs: List[Tuple[str, str]] = []
 
     def __repr__(self) -> str:
         return f'<Requirement: "{self.line}">'
@@ -232,7 +232,7 @@ class Requirement:
             pkg_req = Req.parse(line)
             req.name = pkg_req.unsafe_name  # type: ignore
             req.extras = list(pkg_req.extras)
-            req.specs = pkg_req.specs  # type: ignore
+            req.specs = pkg_req.specs
         return req
 
     @classmethod
