@@ -2,6 +2,34 @@
 
 
 
+## v0.8.0 (2024-04-03)
+
+### Feature
+
+* feat: Add support for Python 3.12 #93 via #94
+
+feat: Drop support for Python 3.7 as part of #91
+
+fix: Publish anciliary files only to sdist #66 via #87 (thanks to Maxwell G &lt;maxwell@gtmx.me&gt;)
+
+fix: Type of `Requirement.specs` was incorrect #78
+
+fix: `-e` in `requirements.txt` did not handle local paths correctly #97
+
+chore(dev-deps): Updated all development dependencies
+
+chore(deps): include types-setuptools as dependency
+
+Signed-off-by: Paul Horton &lt;paul.horton@owasp.org&gt; ([`16ffe88`](https://github.com/madpah/requirements-parser/commit/16ffe88b71502c7b41b62893cf6f1408439ba35d))
+
+### Unknown
+
+* 0.7.0 Release (#95)
+
+Signed-off-by: Paul Horton &lt;paul.horton@owasp.org&gt;
+Co-authored-by: Maxwell G &lt;maxwell@gtmx.me&gt; ([`5c3442a`](https://github.com/madpah/requirements-parser/commit/5c3442a103e6e6e3c06bc875023da25c5ac9f572))
+
+
 ## v0.7.0 (2024-03-28)
 
 ### Chore
