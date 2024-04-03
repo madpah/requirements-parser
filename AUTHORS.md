@@ -1,5 +1,4 @@
-AUTHORS
-=======
+# Authors
 
 - David Fischer (@davidfischer)
 - Trey Hunner (@treyhunner)
@@ -9,3 +8,4 @@ AUTHORS
 - Max Shenfield (@mshenfield)
 - Nicolas Delaby (@ticosax)
 - Stéphane Bidoul (@sbidoul)
+- Paul Horton (@madpah)

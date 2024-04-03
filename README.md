@@ -1,17 +1,17 @@
-Requirements Parser
-===================
+# Requirements Parser
 
-[![Python CI](https://github.com/madpah/requirements-parser/actions/workflows/poetry.yml/badge.svg)](https://github.com/madpah/requirements-parser/actions/workflows/poetry.yml)
-[![Documentation Status](http://readthedocs.org/projects/requirements-parser/badge/?version=latest)](http://requirements-parser.readthedocs.io/en/latest/?badge=latest)
-[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![shield_pypi-version]][link_pypi]
+[![shield_rtfd]][link_rtfd]
+[![shield_gh-workflow-test]][link_gh-workflow-test]
+[![shield_license]][license_file]
+
+---
 
 This is a small Python module for parsing [Pip](http://www.pip-installer.org/) requirement files.
 
-The goal is to parse everything in the 
-[Pip requirement file format](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format) spec.
+The goal is to parse everything in the [Pip requirement file format](https://pip.pypa.io/en/stable/reference/pip_install/#requirements-file-format) spec.
 
-Installation
-============
+## Installation
 
     pip install requirements-parser
 
@@ -19,10 +19,9 @@ or
 
     poetry add requirements-parser
 
-Examples
-========
+## Examples
 
-Requirements parser can parse a file-like object or a text string.
+`requirements-parser` can parse a file-like object or a text string.
 
 ``` {.python}
 >>> import requirements
@@ -33,8 +32,7 @@ Django [('>=', '1.11'), ('<', '1.12')]
 six [('==', '1.10.0')]
 ```
 
-It can handle most if not all of the options in requirement files that
-do not involve traversing the local filesystem. These include:
+It can handle most (if not all) of the options in requirement files that do not involve traversing the local filesystem. These include:
 
 -   editables (`-e git+https://github.com/toastdriven/pyelasticsearch.git]{.title-ref}`)
 -   version control URIs
@@ -42,14 +40,42 @@ do not involve traversing the local filesystem. These include:
 -   extras ([DocParser\[PDF\]]{.title-ref})
 -   URLs
 
-Documentation
-=============
+## Documentation
 
-For more details and examples, the documentation is available at:
-<http://requirements-parser.readthedocs.io>.
+View the documentation [here][link_rtfd].
 
+## Python Support
 
-Change Log
-==========
+We endeavour to support all functionality for all [current actively supported Python versions](https://www.python.org/downloads/).
+However, some features may not be possible/present in older Python versions due to their lack of support.
 
-Change log is available on GitHub [here]()
+## Changelog
+
+See our [CHANGELOG][chaneglog_file].
+
+## Contributing
+
+Feel free to open issues, bugreports or pull requests.  
+See the [CONTRIBUTING][contributing_file] file for details.
+
+## Copyright & License
+
+`requirements-parser` was originally written by @davidfischer and is now maintained by @madpah. See [Authors][authors_file] for full details. 
+
+Permission to modify and redistribute is granted under the terms of the Apache 2.0 license.
+
+See the [LICENSE][license_file] file for the full license.
+
+[authors_file]: https://github.com/madpah/requirements-parser/blob/main/AUTHORS.md
+[license_file]: https://github.com/madpah/requirements-parser/blob/main/LICENSE
+[chaneglog_file]: https://github.com/madpah/requirements-parser/blob/main/CHANGELOG.md
+[contributing_file]: https://github.com/madpah/requirements-parser/blob/main/CONTRIBUTING.md
+
+[shield_gh-workflow-test]: https://img.shields.io/github/actions/workflow/status/madpah/requirements-parser/poetry.yml?branch=main&logo=GitHub&logoColor=white "build"
+[shield_pypi-version]: https://img.shields.io/pypi/v/requirements-parser?logo=pypi&logoColor=white&label=PyPI "PyPI"
+[shield_rtfd]: https://img.shields.io/readthedocs/requirements-parser?logo=readthedocs&logoColor=white "Read the Docs"
+[shield_license]: https://img.shields.io/github/license/madpah/requirements-parser?logo=open%20source%20initiative&logoColor=white "license"
+
+[link_gh-workflow-test]: https://github.com/madpah/requirements-parser/actions/workflows/poetry.yml?query=branch%3Amain
+[link_pypi]: https://pypi.org/project/requirements-parser/
+[link_rtfd]: https://requirements-parser.readthedocs.io/en/latest/
