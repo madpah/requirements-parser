@@ -39,8 +39,8 @@ concurrency:
   cancel-in-progress: false  # prevent duplicates semantic-release
 
 env:
-  PYTHON_VERSION_DEFAULT: "3.9"
-  POETRY_VERSION: "1.4.2"
+  PYTHON_VERSION_DEFAULT: "3.12"
+  POETRY_VERSION: "1.8.1"
 
 permissions:
     id-token: write

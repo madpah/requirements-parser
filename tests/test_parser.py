@@ -48,7 +48,7 @@ class TestParser(TestCase):
         fp = join(TestParser._requirements_files_dir, req_file)
         with open(fp) as req_fh:
             with warnings.catch_warnings():
-                warnings.simplefilter("ignore")
+                warnings.simplefilter('ignore')
                 parsed = parse(req_fh)
 
                 if 'fail' in req_file:

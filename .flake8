@@ -1,0 +1,27 @@
+[flake8]
+## https://flake8.pycqa.org/en/latest/user/configuration.html
+## keep in sync with isort config - in `isort.cfg` file
+
+exclude =
+    build,dist,__pycache__,.eggs,*.egg-info*,
+    *_cache,*.cache,
+    .git,.tox,.venv,venv,.venv*,venv*,
+    _OLD,_TEST,
+    docs
+
+max-line-length = 120
+
+max-complexity = 10
+
+ignore =
+    # ignore `self`, `cls` markers of flake8-annotations>=2.0
+    ANN101,ANN102
+    # ignore ANN401 for dynamically typed *args and **kwargs
+    ANN401
+    # See https://www.flake8rules.com/rules/W503.html
+    # > Despite being in the best practice section, this will soon be considered an anti-pattern.
+    # So lets ignore this "suggestion" that is actually an anti-pattern already!
+    W503
+    # Until we've refactored code, we need to ignore "is too complex"
+    # See https://github.com/madpah/requirements-parser/issues/96
+    C901
