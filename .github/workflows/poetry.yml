@@ -48,7 +48,7 @@ jobs:
         run: poetry run tox run -e flake8 -s false
 
   static-code-analysis:
-    name: StaticCodingAnalysis (py${{ matrix.python-version}} ${{ matrix.toxenv-factors }})
+    name: StaticCodingAnalysis (py${{ matrix.python-version}}${{ matrix.toxenv-factors }})
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     strategy:
