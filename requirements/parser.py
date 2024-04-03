@@ -62,7 +62,10 @@ def parse(reqstr: Union[str, TextIO]) -> Iterator[Requirement]:
         elif not line or line.startswith('#'):
             # comments are lines that start with # only
             continue
-        elif line.startswith('-r') or line.startswith('--requirement'):
+        elif not line or line.startswith('--hash='):
+            # hashes are lines that start with --hash=
+            continue
+        elif line.startswith(('-r', '--requirement')):
             _, new_filename = line.split()
             new_file_path = os.path.join(os.path.dirname(filename or '.'),
                                          new_filename)
