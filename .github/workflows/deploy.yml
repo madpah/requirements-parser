@@ -40,7 +40,7 @@ concurrency:
 
 env:
   PYTHON_VERSION_DEFAULT: "3.12"
-  POETRY_VERSION: "1.7.1"
+  POETRY_VERSION: "1.8.1"
 
 permissions:
     id-token: write
