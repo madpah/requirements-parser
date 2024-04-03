@@ -2,6 +2,15 @@
 
 
 
+## v0.9.0 (2024-04-03)
+
+### Feature
+
+* feat: handle hashes without error (thanks to @dymart via #67) (#98)
+
+Signed-off-by: Paul Horton &lt;paul.horton@owasp.org&gt; ([`a9aafc9`](https://github.com/madpah/requirements-parser/commit/a9aafc9a36caa77df6fad6c2dd9a076d72668c28))
+
+
 ## v0.8.0 (2024-04-03)
 
 ### Feature
