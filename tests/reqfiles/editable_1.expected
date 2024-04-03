@@ -62,5 +62,21 @@
   "hash": null,
   "specs": [],
   "revision": null
- }
+ },
+ {
+  "specifier": false,
+  "local_file": true,
+  "name": "package_name",
+  "editable": true,
+  "subdirectory": null,
+  "uri": null,
+  "extras": [],
+  "vcs": null,
+  "path": "path/to/local",
+  "line":  "-e path/to/local/package_name",
+  "hash_name": null,
+  "hash": null,
+  "specs": [],
+  "revision": null
+  }
 ]
