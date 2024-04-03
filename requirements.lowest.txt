@@ -1,4 +1,0 @@
-# exactly pinned dependencies to the lowest version regardless of python_version
-# see pyptoject file for ranges
-
-types-setuptools == 57.0.0
