@@ -64,6 +64,7 @@ keywords = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
+types-setuptools = ">=69.1.0"
 
 [tool.poetry.group.dev.dependencies]
 coverage = "7.4.4"
