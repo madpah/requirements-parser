@@ -203,7 +203,7 @@ class Requirement:
                     req.vcs = vcs  # type: ignore
         elif uri_match is not None:
             groups = uri_match.groupdict()
-            req.uri = f'{groups["scheme"]}://{groups['path']}'  # type: ignore
+            req.uri = f'{groups["scheme"]}://{groups["path"]}'  # type: ignore
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
                 egg = fragment.get('egg')
