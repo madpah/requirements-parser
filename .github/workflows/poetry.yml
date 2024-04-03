@@ -15,7 +15,7 @@ on:
 env:
   REPORTS_DIR: CI_reports
   PYTHON_VERSION_DEFAULT: "3.12"
-  POETRY_VERSION: "1.4.2"
+  POETRY_VERSION: "1.7.1"
 
 jobs:
   coding-standards:

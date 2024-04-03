@@ -17,7 +17,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 import re
-from typing import cast, Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Tuple, cast
 
 # Copied from pip
 # https://github.com/pypa/pip/blob/281eb61b09d87765d7c2b92f6982b3fe76ccb0af/pip/index.py#L947

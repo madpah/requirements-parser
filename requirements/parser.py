@@ -73,13 +73,13 @@ def parse(reqstr: Union[str, TextIO]) -> Iterator[Requirement]:
                 line.startswith('-i') or line.startswith('--index-url') or \
                 line.startswith('--extra-index-url') or \
                 line.startswith('--no-index'):
-            warnings.warn('Private repos not supported. Skipping.')
+            warnings.warn('Private repos not supported. Skipping.', stacklevel=2)
             continue
         else:
             unsupported: bool = False
             for param in _UNSUPPORTED_OPTIONS.keys():
                 if line.startswith(param):
-                    warnings.warn(str(_UNSUPPORTED_OPTIONS.get(param)))
+                    warnings.warn(str(_UNSUPPORTED_OPTIONS.get(param)), stacklevel=2)
                     unsupported = True
 
             # Otherwise, parse it

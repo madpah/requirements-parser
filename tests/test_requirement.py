@@ -30,28 +30,28 @@ class TestRequirement(TestCase):
                 Requirement.parse(requirement_2))
 
     def test_simple_equality(self) -> None:
-        self.assertEqual(*TestRequirement.get_reqs("pylib==1.0.0", "pylib==1.0.0"))
+        self.assertEqual(*TestRequirement.get_reqs('pylib==1.0.0', 'pylib==1.0.0'))
 
     def test_equality_no_specifiers(self) -> None:
-        self.assertEqual(*TestRequirement.get_reqs("pylib", "pylib"))
+        self.assertEqual(*TestRequirement.get_reqs('pylib', 'pylib'))
 
     def test_simple_inequality(self) -> None:
-        self.assertNotEqual(*TestRequirement.get_reqs("pylib==1.0.0", "pylib==1.0.1"))
+        self.assertNotEqual(*TestRequirement.get_reqs('pylib==1.0.0', 'pylib==1.0.1'))
 
     def test_spec_order_equality(self) -> None:
         """
         The same specifications, in a different order, are still equal
         """
-        self.assertEqual(*TestRequirement.get_reqs("pylib>=1.0,<2.0", "pylib<2.0,>=1.0"))
+        self.assertEqual(*TestRequirement.get_reqs('pylib>=1.0,<2.0', 'pylib<2.0,>=1.0'))
 
     def test_vcs_equality(self) -> None:
         self.assertEqual(*TestRequirement.get_reqs(
-            "-e git://git.example.com/MyProject.git@da39a3ee#egg=MyProject",
-            "-e git://git.example.com/MyProject.git@da39a3ee#egg=MyProject"
+            '-e git://git.example.com/MyProject.git@da39a3ee#egg=MyProject',
+            '-e git://git.example.com/MyProject.git@da39a3ee#egg=MyProject'
         ))
 
     def test_vcs_hash_inequality(self) -> None:
         self.assertNotEqual(*TestRequirement.get_reqs(
-            "-e git://git.example.com/MyProject.git@123#egg=MyProject",
-            "-e git://git.example.com/MyProject.git@abc#egg=MyProject"
+            '-e git://git.example.com/MyProject.git@123#egg=MyProject',
+            '-e git://git.example.com/MyProject.git@abc#egg=MyProject'
         ))
