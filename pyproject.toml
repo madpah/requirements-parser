@@ -1,5 +1,10 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.poetry]
 name = "requirements-parser"
+# !! version is managed by semantic_release
 version = "0.7.0"
 description = "This is a small Python module for parsing Pip requirement files."
 authors = [
@@ -13,18 +18,25 @@ authors = [
     "Nicolas Delaby (@ticosax)",
     "Stéphane Bidoul (@sbidoul)"
 ]
-maintainers = ["Paul Horton <simplyecommerce@gmail.com>"]
+maintainers = ["Paul Horton <paul@hogr.dev>"]
 license = "Apache-2.0"
 readme = "README.md"
-homepage = "https://github.com/madpah/requirements-parser"
+homepage = "https://github.com/madpah/requirements-parser/#readme"
 repository = "https://github.com/madpah/requirements-parser"
+documentation = "https://requirements-parser.readthedocs.io/"
 packages = [
-    { include = "requirements" }
+    { include = "requirements" },
+    { include = "tests", format = "sdist" },
 ]
 include = [
-    "AUTHORS.rst",
-    "LICENSE",
-    "README.md"
+    { path = "AUTHORS.rst", format = "sdist" },
+    { path = "LICENSE", format = "sdist" },
+    { path = "README.md", format = "sdist" },
+]
+exclude = [
+  # exclude dotfiles and dotfolders
+  "**/.*",
+  "docs/_build", "docs/processes",
 ]
 classifiers = [
     # Trove classifiers - https://packaging.python.org/specifications/core-metadata/#metadata-classifier
@@ -41,6 +53,7 @@ classifiers = [
     'Programming Language :: Python :: 3.9',
     'Programming Language :: Python :: 3.10',
     'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
     'Typing :: Typed'
 ]
 keywords = [
@@ -51,22 +64,22 @@ keywords = [
 "Bug Tracker" = "https://github.com/madpah/requirements-parser/issues"
 
 [tool.poetry.dependencies]
-python = "^3.7"
-setuptools = ">= 59.7.0"
-types-setuptools = ">= 59.7.0"
+python = "^3.8"
+types-setuptools = ">=69.1.0"
 
-[tool.poetry.dev-dependencies]
-tox = "^3.24.3"
-coverage = "^6.2"
-mypy = "^0.920"
-autopep8 = "^1.6.0"
-flake8 = "^4.0.1"
-flake8-annotations = {version = "^2.7.0", python = ">= 3.6.2"}
-flake8-bugbear = "^21.11.29"
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+[tool.poetry.group.dev.dependencies]
+coverage = "7.4.4"
+flake8 = { version="7.0.0", python=">=3.8.1" }
+flake8-annotations = { version="3.0.1", python=">=3.8.1" }
+flake8-bugbear = { version="24.2.6", python=">=3.8.1" }
+flake8-isort = "6.1.1"
+flake8-quotes = "3.4.0"
+flake8-use-fstring = "1.4"
+pep8-naming = "0.13.3"
+isort = "5.13.2"
+autopep8 = "2.1.0"
+mypy = "1.9.0"
+tox = "4.14.2"
 
 [tool.semantic_release]
 # see https://python-semantic-release.readthedocs.io/en/latest/configuration.html

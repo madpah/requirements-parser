@@ -19,11 +19,11 @@
 from __future__ import unicode_literals
 
 import re
-from typing import Any, cast, Dict, List, Match, Optional
+from typing import Any, Dict, List, Match, Optional, Tuple, cast
 
 from pkg_resources import Requirement as Req
 
-from .fragment import get_hash_info, parse_fragment, parse_extras_require
+from .fragment import get_hash_info, parse_extras_require, parse_fragment
 from .vcs import VCS, VCS_SCHEMES
 
 URI_REGEX = re.compile(
@@ -87,10 +87,10 @@ class Requirement:
         self.hash_name = None
         self.hash = None
         self.extras: List[str] = []
-        self.specs: List[str] = []
+        self.specs: List[Tuple[str, str]] = []
 
     def __repr__(self) -> str:
-        return '<Requirement: "{0}">'.format(self.line)
+        return f'<Requirement: "{self.line}">'
 
     def __getitem__(self, key: str) -> Any:
         return getattr(self, key)
@@ -128,7 +128,7 @@ class Requirement:
         :raises: ValueError on an invalid requirement
         """
 
-        req = cls('-e {0}'.format(line))
+        req = cls(f'-e {line}')
         req.editable = True
 
         if ' #' in line:
@@ -140,21 +140,20 @@ class Requirement:
         if vcs_match is not None:
             groups: Dict[str, str] = vcs_match.groupdict()
             if groups.get('login'):
-                req.uri = '{scheme}://{login}@{path}'.format(**groups)  # type: ignore
+                req.uri = f'{groups["scheme"]}://{groups["login"]}@{groups["path"]}'  # type: ignore
             else:
-                req.uri = '{scheme}://{path}'.format(**groups)  # type: ignore
+                req.uri = f'{groups["scheme"]}://{groups["path"]}'  # type: ignore
             req.revision = groups['revision']  # type: ignore
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
                 egg = cast(str, fragment.get('egg'))
                 req.name, req.extras = parse_extras_require(egg)  # type: ignore
-                req.hash_name, req.hash = get_hash_info(fragment)     # type: ignore
+                req.hash_name, req.hash = get_hash_info(fragment)  # type: ignore
                 req.subdirectory = fragment.get('subdirectory')  # type: ignore
             for vcs in VCS:
                 if str(req.uri).startswith(vcs):
                     req.vcs = vcs  # type: ignore
-        else:
-            assert local_match is not None, 'This should match everything'
+        elif local_match is not None:
             groups = local_match.groupdict()
             req.local_file = True
             if groups['fragment']:
@@ -164,6 +163,9 @@ class Requirement:
                 req.hash_name, req.hash = get_hash_info(fragment)  # type: ignore
                 req.subdirectory = fragment.get('subdirectory')  # type: ignore
             req.path = cast(str, groups['path'])  # type: ignore
+        else:
+            req.local_file = True
+            req.path, req.name = line.rsplit('/', 1)  # type: ignore
 
         return req
 
@@ -188,9 +190,9 @@ class Requirement:
         if vcs_match is not None:
             groups = vcs_match.groupdict()
             if groups.get('login'):
-                req.uri = '{scheme}://{login}@{path}'.format(**groups)  # type: ignore
+                req.uri = f'{groups["scheme"]}://{groups["login"]}@{groups["path"]}'  # type: ignore
             else:
-                req.uri = '{scheme}://{path}'.format(**groups)  # type: ignore
+                req.uri = f'{groups["scheme"]}://{groups["path"]}'  # type: ignore
             req.revision = groups['revision']  # type: ignore
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
@@ -203,7 +205,7 @@ class Requirement:
                     req.vcs = vcs  # type: ignore
         elif uri_match is not None:
             groups = uri_match.groupdict()
-            req.uri = '{scheme}://{path}'.format(**groups)  # type: ignore
+            req.uri = f'{groups["scheme"]}://{groups["path"]}'  # type: ignore
             if groups['fragment']:
                 fragment = parse_fragment(groups['fragment'])
                 egg = fragment.get('egg')
@@ -232,7 +234,7 @@ class Requirement:
             pkg_req = Req.parse(line)
             req.name = pkg_req.unsafe_name  # type: ignore
             req.extras = list(pkg_req.extras)
-            req.specs = pkg_req.specs  # type: ignore
+            req.specs = pkg_req.specs
         return req
 
     @classmethod
