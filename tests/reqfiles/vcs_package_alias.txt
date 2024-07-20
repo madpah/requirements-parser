@@ -1,5 +1,7 @@
-SomeProject@git+https://git.repo/some_pkg.git@1.3.1[extra]
+SomeProject@git+https://git.repo/some_pkg.git@1.3.1
 SomeProject@git+https://git.repo/some_pkg.git@1.3.1#egg=EggName
 SomeProject@ git+https://git.repo/some_pkg.git@1.3.1
 SomeProject @git+https://git.repo/some_pkg.git@1.3.1
 SomeProject @ git+https://git.repo/some_pkg.git@1.3.1
+
+-e SomeProject@git+https://git.repo/some_pkg.git@1.3.1
