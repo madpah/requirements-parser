@@ -1,0 +1,18 @@
+[
+ {
+  "specifier": false,
+  "local_file": false,
+  "name": "aliasedmyproject",
+  "editable": false,
+  "subdirectory": null,
+  "uri": "git://git.myproject.org/MyProject.git",
+  "extras": [],
+  "vcs": "git",
+  "path": null,
+  "line": "git://git.myproject.org/MyProject.git@master",
+  "hash_name": null,
+  "hash": null,
+  "specs": [],
+  "revision": "master"
+ },
+]
