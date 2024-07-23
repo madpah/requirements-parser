@@ -2,6 +2,23 @@
 
 
 
+## v0.10.0 (2024-07-23)
+
+### Chore
+
+* chore(ci): use non-latest macos runner ([`93b2a85`](https://github.com/madpah/requirements-parser/commit/93b2a8546f682e12ee132f193c7a6882227907bb))
+
+* chore(doc): Updated README
+
+Signed-off-by: Paul Horton &lt;paul.horton@owasp.org&gt; ([`6736727`](https://github.com/madpah/requirements-parser/commit/673672781d37b64b6f2450760ea46e377d91391b))
+
+### Feature
+
+* feat: added support for alias @ &lt;vcs_url&gt; syntax (#101) - thanks to @Glizzus
+
+Signed-off-by: Cal Crosby &lt;calcruiseby@gmail.com&gt; ([`2927e00`](https://github.com/madpah/requirements-parser/commit/2927e0060d61fde37fa571610e19fbc2281068b5))
+
+
 ## v0.9.0 (2024-04-03)
 
 ### Feature
