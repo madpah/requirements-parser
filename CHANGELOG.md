@@ -2,6 +2,15 @@
 
 
 
+## v0.10.1 (2024-07-23)
+
+### Fix
+
+* fix: ValueError when parsing `-e .` (#99) thanks to @vergenzt
+
+Signed-off-by: Tim Vergenz &lt;vergenzt@gmail.com&gt; ([`0e037a4`](https://github.com/madpah/requirements-parser/commit/0e037a45509d04318438900ace9e425f89f4b166))
+
+
 ## v0.10.0 (2024-07-23)
 
 ### Chore

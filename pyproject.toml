@@ -5,7 +5,7 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry]
 name = "requirements-parser"
 # !! version is managed by semantic_release
-version = "0.10.0"
+version = "0.10.1"
 description = "This is a small Python module for parsing Pip requirement files."
 authors = [
     "Paul Horton <paul@hogr.dev>",
