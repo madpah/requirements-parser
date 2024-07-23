@@ -31,9 +31,10 @@ URI_REGEX = re.compile(
     r'(#(?P<fragment>\S+))?'
 )
 
+VCS_OPTIONAL_NAME_REGEX = r'(?:(?P<name>\w+)\s*@)?\s*'
 VCS_SCHEMES_REGEX = r'|'.join([scheme.replace('+', r'\+') for scheme in VCS_SCHEMES])
 VCS_REGEX = re.compile(
-    rf'^(?P<scheme>{VCS_SCHEMES_REGEX})://((?P<login>[^/@]+)@)?'
+    rf'^{VCS_OPTIONAL_NAME_REGEX}(?P<scheme>{VCS_SCHEMES_REGEX})://((?P<login>[^/@]+)@)?'
     r'(?P<path>[^#@]+)(@(?P<revision>[^#]+))?(#(?P<fragment>\S+))?'
 )
 
@@ -150,6 +151,8 @@ class Requirement:
                 req.name, req.extras = parse_extras_require(egg)  # type: ignore
                 req.hash_name, req.hash = get_hash_info(fragment)  # type: ignore
                 req.subdirectory = fragment.get('subdirectory')  # type: ignore
+            if groups['name']:
+                req.name = groups['name']  # type: ignore
             for vcs in VCS:
                 if str(req.uri).startswith(vcs):
                     req.vcs = vcs  # type: ignore
@@ -203,6 +206,8 @@ class Requirement:
             for vcs in VCS:
                 if str(req.uri).startswith(vcs):
                     req.vcs = vcs  # type: ignore
+            if groups['name']:
+                req.name = groups['name']  # type: ignore
         elif uri_match is not None:
             groups = uri_match.groupdict()
             req.uri = f'{groups["scheme"]}://{groups["path"]}'  # type: ignore
