@@ -168,7 +168,7 @@ class Requirement:
             req.path = cast(str, groups['path'])  # type: ignore
         else:
             req.local_file = True
-            req.path, req.name = line.rsplit('/', 1)  # type: ignore
+            req.path, _, req.name = line.rpartition('/')  # type: ignore
 
         return req
 
