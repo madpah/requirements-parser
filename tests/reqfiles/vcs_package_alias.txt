@@ -5,3 +5,21 @@ SomeProject @git+https://git.repo/some_pkg.git@1.3.1
 SomeProject @ git+https://git.repo/some_pkg.git@1.3.1
 
 -e SomeProject@git+https://git.repo/some_pkg.git@1.3.1
+
+Some_Project@git+https://git.repo/some_pkg.git@1.3.1
+Some-Project@git+https://git.repo/some_pkg.git@1.3.1
+Some_Project@git+https://git.repo/some_pkg.git@1.3.1#egg=EggName
+Some_Project@ git+https://git.repo/some_pkg.git@1.3.1
+Some_Project @git+https://git.repo/some_pkg.git@1.3.1
+Some_Project @ git+https://git.repo/some_pkg.git@1.3.1
+
+-e Some_Project@git+https://git.repo/some_pkg.git@1.3.1
+
+SomeProject[extra1,extra2]@git+https://git.repo/some_pkg.git@1.3.1
+Some_Project[extra1]@git+https://git.repo/some_pkg.git@1.3.1
+SomeProject[extra1,extra2]@git+https://git.repo/some_pkg.git@1.3.1#egg=EggName
+SomeProject[extra1,extra2]@ git+https://git.repo/some_pkg.git@1.3.1
+SomeProject[extra1,extra2] @git+https://git.repo/some_pkg.git@1.3.1
+SomeProject[extra1,extra2] @ git+https://git.repo/some_pkg.git@1.3.1
+
+-e SomeProject[extra1,extra2]@git+https://git.repo/some_pkg.git@1.3.1
