@@ -2,6 +2,15 @@
 
 
 
+## v0.10.2 (2024-07-26)
+
+### Fix
+
+* fix: support extras and more chars in names for VCS lines (#103) - thanks @theCapypara
+
+Signed-off-by: Marco &#34;Capypara&#34; Köpcke &lt;hello@capypara.de&gt; ([`90e7f9e`](https://github.com/madpah/requirements-parser/commit/90e7f9ea1946716c67a2440278ee166448ecc039))
+
+
 ## v0.10.1 (2024-07-23)
 
 ### Fix
