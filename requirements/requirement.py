@@ -243,7 +243,7 @@ class Requirement:
             # pkg_resources specs, i.e., a list of (op,version) tuples
             specs = []
             for specifier in pkg_req.specifier:
-                spec = re.split("([=<>~]+)", str(specifier), maxsplit=1)
+                spec = re.split('([=<>~]+)', str(specifier), maxsplit=1)
                 spec = list(filter(None, spec))
                 specs.append(spec)
             req.specs = specs
