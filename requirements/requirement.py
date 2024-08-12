@@ -21,7 +21,7 @@ from __future__ import unicode_literals
 import re
 from typing import Any, Dict, List, Match, Optional, Tuple, cast
 
-from pkg_resources import Requirement as Req
+from packaging.requirements import Requirement as Req
 
 from .fragment import get_hash_info, parse_extras_require, parse_fragment
 from .vcs import VCS, VCS_SCHEMES
@@ -234,12 +234,20 @@ class Requirement:
             req.path = groups['path']  # type: ignore
         else:
             # This is a requirement specifier.
-            # Delegate to pkg_resources and hope for the best
+            # Delegate to packaging.requirements and hope for the best
             req.specifier = True
-            pkg_req = Req.parse(line)
-            req.name = pkg_req.unsafe_name  # type: ignore
-            req.extras = list(pkg_req.extras)
-            req.specs = pkg_req.specs
+            line_without_comment = re.sub('#.*', '', line)
+            pkg_req = Req(line_without_comment)
+            req.name = pkg_req.name  # type: ignore
+            req.extras = [x.lower() for x in list(pkg_req.extras)]
+            # Convert packaging.specifiers.SpecifierSet into
+            # pkg_resources specs, i.e., a list of (op,version) tuples
+            specs = []
+            for specifier in pkg_req.specifier:
+                spec = re.split('([=<>~!]+)', str(specifier), maxsplit=1)
+                spec = list(filter(None, spec))
+                specs.append(tuple(spec))
+            req.specs = specs  # type: ignore
         return req
 
     @classmethod
