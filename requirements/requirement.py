@@ -236,17 +236,18 @@ class Requirement:
             # This is a requirement specifier.
             # Delegate to packaging.requirements and hope for the best
             req.specifier = True
-            pkg_req = Req(line)
+            line_without_comment = re.sub('#.*', '', line)
+            pkg_req = Req(line_without_comment)
             req.name = pkg_req.name  # type: ignore
-            req.extras = list(pkg_req.extras)
+            req.extras = [x.lower() for x in list(pkg_req.extras)]
             # Convert packaging.specifiers.SpecifierSet into
             # pkg_resources specs, i.e., a list of (op,version) tuples
             specs = []
             for specifier in pkg_req.specifier:
-                spec = re.split('([=<>~]+)', str(specifier), maxsplit=1)
+                spec = re.split('([=<>~!]+)', str(specifier), maxsplit=1)
                 spec = list(filter(None, spec))
-                specs.append(spec)
-            req.specs = specs
+                specs.append(tuple(spec))
+            req.specs = specs  # type: ignore
         return req
 
     @classmethod
