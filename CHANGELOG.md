@@ -2,6 +2,29 @@
 
 
 
+## v0.11.0 (2024-08-12)
+
+### Feature
+
+* feat: replace deprecated `pkg_resources` with `packaging` (#105) - thanks to @oh2fih
+
+Signed-off-by: Esa Jokinen &lt;esa@esajokinen.net&gt;
+
+* Fix errors discovered with the unit tests
+
+- Hashable type required. Convert list to tuple.
+- Ignore incompatible types.
+- Remove comments before passing the line to Req().
+- Extras should be in lower case.
+- Complete the list of comparison operators with &#39;!&#39;.
+
+Signed-off-by: Esa Jokinen &lt;esa@esajokinen.net&gt;
+
+---------
+
+Signed-off-by: Esa Jokinen &lt;esa@esajokinen.net&gt; ([`19dddfa`](https://github.com/madpah/requirements-parser/commit/19dddfa2348b2cfaa6f0fb624851c8e36eee59ba))
+
+
 ## v0.10.2 (2024-07-26)
 
 ### Fix
