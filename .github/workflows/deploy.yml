@@ -39,7 +39,7 @@ concurrency:
   cancel-in-progress: false  # prevent duplicates semantic-release
 
 env:
-  PYTHON_VERSION_DEFAULT: "3.12"
+  PYTHON_VERSION_DEFAULT: "3.13"
   POETRY_VERSION: "1.8.1"
 
 permissions:

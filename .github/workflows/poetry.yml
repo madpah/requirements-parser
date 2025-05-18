@@ -18,7 +18,7 @@ concurrency:
 
 env:
   REPORTS_DIR: CI_reports
-  PYTHON_VERSION_DEFAULT: "3.12"
+  PYTHON_VERSION_DEFAULT: "3.13"
   POETRY_VERSION: "1.8.1"
   TESTS_REPORTS_ARTIFACT: tests-reports
 
@@ -57,7 +57,7 @@ jobs:
         include:
           - # test with the locked dependencies
             os: ubuntu-latest
-            python-version: '3.12'
+            python-version: '3.13'
             toxenv-factors: '-current'
           - # test with the lowest dependencies
             os: ubuntu-latest
@@ -92,7 +92,9 @@ jobs:
       matrix:
         os: ['ubuntu-latest', 'windows-latest', 'macos-13']
         python-version:
-          - "3.12" # highest supported
+          - "3.14" # highest supported
+          - "3.13"
+          - "3.12"
           - "3.11"
           - "3.10"
           - "3.9"
