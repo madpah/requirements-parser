@@ -64,7 +64,7 @@ keywords = [
 "Bug Tracker" = "https://github.com/madpah/requirements-parser/issues"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = ">=3.8"
 packaging = ">=23.2"
 
 [tool.poetry.group.dev.dependencies]
