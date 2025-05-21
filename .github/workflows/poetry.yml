@@ -141,6 +141,6 @@ jobs:
         # see https://github.com/actions/upload-artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.TESTS_REPORTS_ARTIFACT }}
+          name: ${{ env.TESTS_REPORTS_ARTIFACT }}-${{ matrix.os }}-py${{ matrix.python-version }}
           path: ${{ env.REPORTS_DIR }}
           if-no-files-found: error
