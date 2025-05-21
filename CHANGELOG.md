@@ -2,6 +2,25 @@
 
 
 
+## v0.13.0 (2025-05-21)
+
+### Chore
+
+* chore(ci): update `actions/upload-artifact`
+
+Signed-off-by: Paul Horton &lt;paul.horton@owasp.org&gt; ([`4ec20b6`](https://github.com/madpah/requirements-parser/commit/4ec20b69807bc9eba08f6a3115c57511c5ddf17a))
+
+* chore(ci): update `actions/upload-artifact`
+
+Signed-off-by: Paul Horton &lt;paul.horton@owasp.org&gt; ([`089094f`](https://github.com/madpah/requirements-parser/commit/089094f2abf1b48d74e3d0228f422574b41de4cc))
+
+### Feature
+
+* feat: Remove Python 3.14 support - not yet released
+
+Signed-off-by: Paul Horton &lt;paul.horton@owasp.org&gt; ([`80d296e`](https://github.com/madpah/requirements-parser/commit/80d296e22a0ff30e0f17cb1feaf12ea2ea76d5e5))
+
+
 ## v0.12.0 (2025-05-21)
 
 ### Chore
