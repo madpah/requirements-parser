@@ -2,6 +2,29 @@
 
 
 
+## v0.12.0 (2025-05-21)
+
+### Chore
+
+* chore(deps): remove obsolete `types-setuptools` (#106)
+
+Before https://github.com/madpah/requirements-parser/pull/105,
+`pkg_resources` was implicitly present with `setuptools`, so it was
+useful to have `types-setuptools` to check typing. But now that the
+usage is gone, the typing dependency should not be needed. It probably
+should have never been a direct dependency anyway, but only a dev
+dependency, as AFAIK it was only useful locally to verify typing, not
+when installing the library for consumers.
+
+Signed-off-by: Mathieu Kniewallner &lt;mathieu.kniewallner@gmail.com&gt; ([`5937fb4`](https://github.com/madpah/requirements-parser/commit/5937fb4ebba1e83a9a79c1faf2b53e35e59f583d))
+
+### Feature
+
+* feat: Add Python 3.13 and 3.14 to the CI test matrix (#109)
+
+Signed-off-by: Edgar Ramírez Mondragón &lt;edgarrm358@gmail.com&gt; ([`cf149b2`](https://github.com/madpah/requirements-parser/commit/cf149b281e9992b3d6b9508b4e79a4069e419f79))
+
+
 ## v0.11.0 (2024-08-12)
 
 ### Feature
