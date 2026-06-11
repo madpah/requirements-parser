@@ -72,6 +72,12 @@ def parse(reqstr: Union[str, TextIO]) -> Iterator[Requirement]:
             with open(new_file_path) as f:
                 for requirement in parse(f):
                     yield requirement
+        elif line.startswith('.'):
+            # Relative paths are not supported, but we can warn about them.
+            warnings.warn(
+                f'Relative path in {filename or "?"}: {line} is not supported. Skippining', stacklevel=2
+            )
+            continue
         elif line.startswith('-f') or line.startswith('--find-links') or \
                 line.startswith('-i') or line.startswith('--index-url') or \
                 line.startswith('--extra-index-url') or \
