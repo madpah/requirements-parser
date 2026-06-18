@@ -87,6 +87,8 @@ jobs:
     name: Test (${{ matrix.os }} py${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
+    # Python 3.8-3.10 x64 binaries are incompatible with macOS ARM64 runners
+    continue-on-error: ${{ matrix.os == 'macos-latest' && contains(fromJson('["3.8", "3.9", "3.10"]'), matrix.python-version) }}
     strategy:
       fail-fast: false
       matrix:
