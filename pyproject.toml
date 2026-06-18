@@ -92,6 +92,7 @@ version_variables = [
   "requirements/__init__.py:__version__",
   "docs/conf.py:release",
 ]
+allow_zero_version = true
 
 [tool.semantic_release.publish]
 dist_glob_patterns = ["dist/*"]
