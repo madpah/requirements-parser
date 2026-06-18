@@ -1,6 +1,6 @@
 # CHANGELOG
 
-<!-- semantic-release:commit -->
+<!-- version list -->
 
 
 

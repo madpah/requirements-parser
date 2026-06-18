@@ -99,11 +99,13 @@ dist_glob_patterns = ["dist/*"]
 upload_to_vcs_release = true
 
 [tool.semantic_release.changelog]
-changelog_file = "CHANGELOG.md"
 exclude_commit_patterns = [
   "chore\\(release\\):",
   "chore\\(skip\\):",
 ]
+
+[tool.semantic_release.changelog.default_templates]
+changelog_file = "CHANGELOG.md"
 
 [tool.semantic_release.branches.main]
 match = "(main|master)"
